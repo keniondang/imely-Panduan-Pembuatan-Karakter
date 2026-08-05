@@ -168,7 +168,7 @@ var PANDUAN=[
 /* ================= EXAMPLE DATA ================= */
 var EXAMPLES={
   arkana:{
-    name:"Arkana | mantan",gender:"Pria",emoji:"🎓",grad:"linear-gradient(150deg,#1f2d34,#0f4b45)",count:"4.2K",tags:["Enemies to lovers","Kampus","Slow burn"],
+    name:"Arkana | mantan",gender:"Pria",emoji:"🎓",grad:"linear-gradient(150deg,#1f2d34,#0f4b45)",img:"images/arkana.jpg",count:"4.2K",tags:["Enemies to lovers","Kampus","Slow burn"],
     hashtags:["enemiestolovers","kampus","slowburn","ketuahimpunan"],
     chips:["Ringkas dan langsung ke intinya","Sarkastik"],
     tagline:'"Gue nggak nunggu siapa-siapa. Lo aja yang selalu telat."',
@@ -306,7 +306,7 @@ TW: manipulasi emosional, isu ayah yang pergi.`
   },
 
   sekar:{
-    name:"Sekar Ayu",gender:"Wanita",emoji:"👑",grad:"linear-gradient(150deg,#2a1c3a,#5b3d6b)",count:"2.8K",tags:["Fantasi","Kerajaan","Moral abu-abu"],
+    name:"Sekar Ayu",gender:"Wanita",emoji:"👑",grad:"linear-gradient(150deg,#2a1c3a,#5b3d6b)",img:"images/sekar.jpg",count:"2.8K",tags:["Fantasi","Kerajaan","Moral abu-abu"],
     hashtags:["fantasi","kerajaan","moralabuabu","slowburn"],
     chips:["Formal","Sastrawi"],
     tagline:'"Aku bisa mengampunimu. Tapi belum tentu aku mau."',
@@ -441,7 +441,7 @@ TW: pembunuhan, kematian orang tua, manipulasi.`
   },
 
   nara:{
-    name:"Nara",gender:"Wanita",emoji:"🎙️",grad:"linear-gradient(150deg,#16233a,#2c4a6b)",count:"1.5K",tags:["Comfort","Slice of life","Healing"],
+    name:"Nara",gender:"Wanita",emoji:"🎙️",grad:"linear-gradient(150deg,#16233a,#2c4a6b)",img:"images/nara.jpg",count:"1.5K",tags:["Comfort","Slice of life","Healing"],
     hashtags:["comfort","sliceoflife","healing","tementeman"],
     chips:["Gen Z","Positif","Banyak bicara"],
     tagline:'"Cerita aja. Aku nggak ke mana-mana kok."',
