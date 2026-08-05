@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Belajar Buat Karakter</title>
@@ -34,12 +35,35 @@
   /* home sticky header + tabs */
   .home-top{position:sticky;top:0;z-index:30;background:var(--white);}
   .home-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px 10px;}
+  .home-header .acct-right{display:flex;align-items:center;gap:10px;}
   .brand{display:flex;align-items:center;gap:11px;}
   .logo-badge{width:40px;height:40px;border-radius:12px;background:#111315;border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;}
   .logo-badge svg{width:26px;height:26px;}
   .logo-text{font-size:26px;font-weight:800;letter-spacing:-.5px;color:var(--ink);}
   .hdr-add{width:40px;height:40px;border-radius:50%;border:none;background:var(--field);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s;}
   .hdr-add:hover{background:var(--field-focus);}
+  /* account control */
+  .masuk-btn{background:var(--teal);border:none;color:#fff;border-radius:999px;padding:9px 18px;font-family:inherit;font-size:14px;font-weight:800;cursor:pointer;transition:.15s;}
+  .masuk-btn:hover{background:var(--teal-dark);}
+  .acct-wrap{position:relative;}
+  .avatar-btn{width:40px;height:40px;border-radius:50%;border:none;background:var(--teal);color:#fff;font-size:16px;font-weight:800;cursor:pointer;font-family:inherit;}
+  .acct-menu{position:absolute;top:48px;right:0;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 30px -10px rgba(0,0,0,.25);padding:8px;min-width:190px;z-index:40;}
+  .acct-menu[hidden]{display:none;}
+  .acct-menu .acct-email{margin:6px 10px 8px;font-size:13px;color:var(--sub);word-break:break-all;}
+  .acct-signout{width:100%;text-align:left;background:none;border:none;border-radius:9px;padding:10px;font-family:inherit;font-size:14px;font-weight:700;color:#D14343;cursor:pointer;}
+  .acct-signout:hover{background:#FDEDED;}
+  /* sign-in sheet */
+  .signin-body{padding:20px 22px 28px;}
+  .signin-lead{margin:0 0 16px;font-size:14.5px;line-height:1.5;color:var(--sub);}
+  .signin-email{width:100%;border:1.5px solid var(--line);background:var(--field);border-radius:12px;padding:15px;font-size:15px;font-family:inherit;outline:none;margin-bottom:14px;}
+  .signin-email:focus{border-color:var(--teal);background:#fff;}
+  .signin-body .submit{width:100%;border:none;border-radius:999px;background:var(--teal);color:#fff;font-size:16px;font-weight:800;padding:17px;cursor:pointer;}
+  .signin-body .submit:hover{background:var(--teal-dark);}
+  .signin-sent{text-align:center;padding:14px 4px;}
+  .signin-sent .se-ic{font-size:46px;}
+  .signin-sent h4{margin:12px 0 8px;font-size:20px;font-weight:800;}
+  .signin-sent p{margin:0;font-size:14.5px;color:var(--sub);line-height:1.5;}
+  .shelf-loading{font-size:13px;color:var(--muted);padding:4px 2px;}
   .home-tabs{display:flex;gap:26px;padding:2px 20px 0;border-bottom:1px solid var(--line);}
   .htab{position:relative;background:none;border:none;padding:10px 2px 12px;font-family:inherit;font-size:16px;font-weight:700;color:var(--muted);cursor:pointer;transition:color .15s;}
   .htab.active{color:var(--teal-dark);font-weight:800;}
@@ -434,7 +458,10 @@
           </span>
           <span class="logo-text">imely</span>
         </div>
-        <button class="hdr-add" onclick="loadForm('empty')" aria-label="Buat karakter"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#111" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="acct-right">
+          <div class="acct" id="acctArea"></div>
+          <button class="hdr-add" onclick="tryBuat()" aria-label="Buat karakter"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#111" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        </div>
       </div>
       <div class="home-tabs">
         <button class="htab active" onclick="homeTab(this,'sec-panduan')">Panduan</button>
@@ -466,7 +493,7 @@
 
       <div id="sec-buat">
         <p class="home-sec-label">Coba sendiri</p>
-        <button class="card solid" onclick="loadForm('empty')">
+        <button class="card solid" onclick="tryBuat()">
           <span class="ic practice"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
           <span class="body-txt"><strong>Latihan dari nol</strong><small>Form kosong buat kamu isi sendiri</small></span>
           <span class="chev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></span>
@@ -741,6 +768,16 @@
     </div>
     <div class="pan-detail" id="panModalBody"></div>
     <div class="modal-foot"><button class="modal-done" onclick="closePanModal()">Tutup</button></div>
+  </div>
+</div>
+
+<!-- sign-in sheet (magic link) -->
+<div class="sheet-overlay" id="signinSheet" hidden onclick="if(event.target===this)closeSignin()">
+  <div class="sheet">
+    <div class="sheet-head"><span class="sp"></span><h3>Masuk</h3>
+      <button class="sheet-x" onclick="closeSignin()" aria-label="Tutup"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="signin-body" id="signinBody"></div>
   </div>
 </div>
 
@@ -1290,32 +1327,97 @@ function cekKarakter(){
 }
 
 /* ---------- storage (swappable: localStorage now, Supabase later) ---------- */
+/* ---------- CONFIG: paste your Supabase values, then deploy ---------- */
+var SUPABASE_URL='https://YOUR-PROJECT.supabase.co';
+var SUPABASE_ANON_KEY='YOUR-ANON-KEY';
+
+var SUPA_READY=(SUPABASE_URL.indexOf('YOUR-PROJECT')<0 && SUPABASE_ANON_KEY.indexOf('YOUR-ANON')<0 && typeof supabase!=='undefined');
+var sb=null;
+if(SUPA_READY){try{sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);}catch(e){SUPA_READY=false;}}
+var currentUser=null,pendingAction=null,currentSavedChar=null;
+
+/* ---------- storage: Supabase when logged in, else localStorage (guest/preview) ---------- */
+function rowToChar(r){return {id:r.id,name:r.name,score:r.score,values:r.values,savedAt:new Date(r.created_at).getTime()};}
 var Store=(function(){
   var KEY='imely_chars_v1',mem=null;
-  function read(){if(mem!==null)return mem;try{var raw=localStorage.getItem(KEY);mem=raw?JSON.parse(raw):[];}catch(e){mem=[];}return mem;}
-  function write(list){mem=list;try{localStorage.setItem(KEY,JSON.stringify(list));}catch(e){}}
+  function lsRead(){if(mem!==null)return mem;try{var raw=localStorage.getItem(KEY);mem=raw?JSON.parse(raw):[];}catch(e){mem=[];}return mem;}
+  function lsWrite(l){mem=l;try{localStorage.setItem(KEY,JSON.stringify(l));}catch(e){}}
+  function online(){return SUPA_READY&&currentUser;}
   return {
-    list:function(){return read().slice();},
-    get:function(id){var a=read();for(var i=0;i<a.length;i++){if(a[i].id===id)return a[i];}return null;},
-    save:function(o){var a=read(),f=-1;for(var i=0;i<a.length;i++){if(a[i].id===o.id){f=i;break;}}if(f>=0)a[f]=o;else a.push(o);write(a);},
-    remove:function(id){write(read().filter(function(c){return c.id!==id;}));}
+    list:async function(){
+      if(online()){try{var r=await sb.from('characters').select('*').order('created_at',{ascending:false});if(r.error)return [];return r.data.map(rowToChar);}catch(e){return [];}}
+      return lsRead().slice().sort(function(a,b){return b.savedAt-a.savedAt;});
+    },
+    get:async function(id){
+      if(online()){try{var r=await sb.from('characters').select('*').eq('id',id).single();return r.data?rowToChar(r.data):null;}catch(e){return null;}}
+      var a=lsRead();for(var i=0;i<a.length;i++){if(a[i].id===id)return a[i];}return null;
+    },
+    save:async function(o){
+      if(online()){
+        var row={name:o.name,score:o.score,values:o.values};
+        if(o.id){try{await sb.from('characters').update(row).eq('id',o.id);}catch(e){}return o.id;}
+        row.user_id=currentUser.id;
+        try{var r=await sb.from('characters').insert(row).select('id').single();return (r.data&&r.data.id)||null;}catch(e){return null;}
+      }
+      var a=lsRead(),f=-1;for(var i=0;i<a.length;i++){if(a[i].id===o.id){f=i;break;}}if(f>=0)a[f]=o;else a.push(o);lsWrite(a);return o.id;
+    },
+    remove:async function(id){
+      if(online()){try{await sb.from('characters').delete().eq('id',id);}catch(e){}return;}
+      lsWrite(lsRead().filter(function(c){return c.id!==id;}));
+    }
   };
 })();
 var lastCek=null,editingSavedId=null,currentSavedId=null,formLocked=false;
-
 function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},1600);}
 
-function saveCurrent(){
+/* ---------- auth (magic link) ---------- */
+async function initAuth(){
+  if(!SUPA_READY){renderAccount();buildSavedShelf();return;}
+  try{var r=await sb.auth.getSession();currentUser=r.data.session?r.data.session.user:null;}catch(e){currentUser=null;}
+  renderAccount();buildSavedShelf();
+  sb.auth.onAuthStateChange(function(_e,session){currentUser=session?session.user:null;renderAccount();buildSavedShelf();
+    if(currentUser&&pendingAction){var fn=pendingAction;pendingAction=null;fn();}});
+}
+function renderAccount(){
+  var a=document.getElementById('acctArea');if(!a)return;
+  if(!SUPA_READY){a.innerHTML='';return;}
+  if(currentUser){
+    var em=currentUser.email||'akun';var ini=(em[0]||'?').toUpperCase();
+    a.innerHTML='<div class="acct-wrap"><button class="avatar-btn" onclick="toggleAcctMenu()">'+ini+'</button>'+
+      '<div class="acct-menu" id="acctMenu" hidden><p class="acct-email">'+escHtml(em)+'</p><button class="acct-signout" onclick="signOut()">Keluar</button></div></div>';
+  }else{a.innerHTML='<button class="masuk-btn" onclick="openSignin()">Masuk</button>';}
+}
+function toggleAcctMenu(){var m=document.getElementById('acctMenu');if(m)m.hidden=!m.hidden;}
+async function signOut(){if(SUPA_READY){try{await sb.auth.signOut();}catch(e){}}currentUser=null;renderAccount();buildSavedShelf();showScreen('screen-home');toast('Keluar');}
+var SIGNIN_FORM='<p class="signin-lead">Masuk dulu buat bikin & simpan karakter. Baca panduan & contoh tetap bebas tanpa masuk.</p><input class="signin-email" id="signinEmail" type="email" placeholder="email@kamu.com" autocomplete="email"><button class="submit" onclick="sendMagicLink()">Kirim link masuk</button>';
+function openSignin(){document.getElementById('signinBody').innerHTML=SIGNIN_FORM;document.getElementById('signinSheet').hidden=false;}
+function closeSignin(){document.getElementById('signinSheet').hidden=true;}
+async function sendMagicLink(){
+  var email=(document.getElementById('signinEmail').value||'').trim();
+  if(!email||email.indexOf('@')<0){toast('Masukin email yang valid');return;}
+  if(!SUPA_READY){closeSignin();toast('Mode demo: login dilewati');if(pendingAction){var fn=pendingAction;pendingAction=null;fn();}return;}
+  try{var r=await sb.auth.signInWithOtp({email:email,options:{emailRedirectTo:window.location.origin}});if(r.error){toast('Gagal: '+r.error.message);return;}}
+  catch(e){toast('Gagal kirim link');return;}
+  document.getElementById('signinBody').innerHTML='<div class="signin-sent"><div class="se-ic">\u2709\uFE0F</div><h4>Cek email kamu</h4><p>Kami kirim link masuk ke <b>'+escHtml(email)+'</b>. Klik link itu buat lanjut.</p></div>';
+}
+function requireAuth(fn){if(!SUPA_READY||currentUser){fn();return;}pendingAction=fn;openSignin();}
+function tryBuat(){requireAuth(function(){loadForm('empty');});}
+
+/* ---------- save / shelf / detail ---------- */
+async function saveCurrent(){
   if(!lastCek)return;
-  var id=editingSavedId||('c'+Date.now());editingSavedId=id;
-  Store.save({id:id,name:(lastCek.values.name||'Tanpa nama'),score:{ok:lastCek.ok,total:lastCek.total},values:lastCek.values,savedAt:Date.now()});
-  buildSavedShelf();showScreen('screen-home');toast('Karakter tersimpan');
+  var obj={id:editingSavedId||null,name:(lastCek.values.name||'Tanpa nama'),score:{ok:lastCek.ok,total:lastCek.total},values:lastCek.values,savedAt:Date.now()};
+  if(!obj.id&&!(SUPA_READY&&currentUser))obj.id='c'+Date.now();
+  var id=await Store.save(obj);editingSavedId=id||obj.id;
+  await buildSavedShelf();showScreen('screen-home');toast('Karakter tersimpan');
 }
 var SV_GRADS=['linear-gradient(150deg,#1f2d34,#0f4b45)','linear-gradient(150deg,#2a1c3a,#5b3d6b)','linear-gradient(150deg,#16233a,#2c4a6b)','linear-gradient(150deg,#3a1c22,#6b3d3d)','linear-gradient(150deg,#1c2e1f,#3d6b4a)','linear-gradient(150deg,#2e2a1c,#6b5a3d)'];
-function gradFor(id){var h=0;for(var i=0;i<id.length;i++){h=(h*31+id.charCodeAt(i))>>>0;}return SV_GRADS[h%SV_GRADS.length];}
-function buildSavedShelf(){
+function gradFor(id){var h=0;id=String(id);for(var i=0;i<id.length;i++){h=(h*31+id.charCodeAt(i))>>>0;}return SV_GRADS[h%SV_GRADS.length];}
+async function buildSavedShelf(){
   var box=document.getElementById('savedSection');if(!box)return;
-  var list=Store.list().sort(function(a,b){return b.savedAt-a.savedAt;});
+  if(SUPA_READY&&!currentUser){box.innerHTML='';return;}
+  box.innerHTML='<p class="home-sec-label">Karakter saya</p><p class="shelf-loading">Memuat\u2026</p>';
+  var list=await Store.list();
   if(!list.length){box.innerHTML='';return;}
   var html='<p class="home-sec-label">Karakter saya</p><div class="sv-grid">';
   list.forEach(function(c){
@@ -1328,8 +1430,8 @@ function buildSavedShelf(){
 }
 var SAVED_FIELDS=[['name','Nama karakter'],['gender','Jenis kelamin'],['hashtags','Hashtag'],['tagline','Tagline'],['kepribadian','Kepribadian'],['info','Informasi publik'],['bio','Biografi'],['pesan','Pesan pertama'],['npc','Karakter pendukung (NPC)'],['gaya','Gaya komunikasi'],['pedoman','Pedoman & batasan'],['catatan','Catatan kreator']];
 function svVal(v){if(Array.isArray(v))return v.map(function(t){return '#'+t;}).join(' ');return v||'';}
-function openSavedDetail(id){
-  currentSavedId=id;var c=Store.get(id);if(!c)return;
+async function openSavedDetail(id){
+  currentSavedId=id;var c=await Store.get(id);if(!c)return;currentSavedChar=c;
   document.getElementById('savedTitle').textContent=c.name||'Karakter';
   var html='<p class="saved-hint">Copy tiap kolom, terus paste satu-satu ke form Buat Karakter di app Imely.</p>';
   SAVED_FIELDS.forEach(function(fd){
@@ -1346,13 +1448,13 @@ function copyToClipboard(text){
   try{var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();document.execCommand('copy');document.body.removeChild(ta);}catch(e){}
 }
 function copyField(key,btn){
-  var c=Store.get(currentSavedId);if(!c)return;
+  var c=currentSavedChar;if(!c)return;
   copyToClipboard(svVal(c.values[key]));
   btn.textContent='Tersalin \u2713';btn.classList.add('done');
   setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1400);
 }
-function editSaved(){
-  var c=Store.get(currentSavedId);if(!c)return;
+async function editSaved(){
+  var c=currentSavedChar||await Store.get(currentSavedId);if(!c)return;
   currentFormKey='saved';editingSavedId=c.id;clearForm();setFormLocked(false);setAdv(false);document.getElementById('ckBtn').textContent='Cek karakter';
   document.getElementById('formTitle').textContent='Edit: '+(c.name||'Karakter');
   applySaved(c.values);showScreen('screen-form');document.querySelector('#screen-form .body').scrollTop=0;
@@ -1364,9 +1466,9 @@ function applySaved(v){
   setVal('f_bio',v.bio);setVal('f_pesan',v.pesan);setVal('f_npc',v.npc);setVal('styleTa',v.gaya);
   setVal('f_pedoman',v.pedoman);setVal('f_catatan',v.catatan);
 }
-function deleteSaved(btn){
+async function deleteSaved(btn){
   if(!btn.classList.contains('armed')){btn.classList.add('armed');btn.textContent='Yakin? Hapus';setTimeout(function(){if(btn){btn.classList.remove('armed');btn.textContent='Hapus';}},2500);return;}
-  Store.remove(currentSavedId);buildSavedShelf();showScreen('screen-home');toast('Karakter dihapus');
+  await Store.remove(currentSavedId);await buildSavedShelf();showScreen('screen-home');toast('Karakter dihapus');
 }
 
 /* ================= EXAMPLE DATA ================= */
@@ -1768,7 +1870,7 @@ TW: tema kesepian.`
   }
 };
 buildExampleGrid();
-buildSavedShelf();
+initAuth();
 </script>
 </body>
 </html>
