@@ -1326,7 +1326,6 @@ function cekKarakter(){
   showScreen('screen-check');
 }
 
-/* ---------- storage (swappable: localStorage now, Supabase later) ---------- */
 /* ---------- CONFIG: paste your Supabase values, then deploy ---------- */
 var SUPABASE_URL='https://qtgkwrkbmpuajaqweyta.supabase.co';
 var SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0Z2t3cmtibXB1YWphcXdleXRhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU5MDkxNTgsImV4cCI6MjEwMTQ4NTE1OH0.6Ayng7ns8ollk7DoIV8tVn5TnXUOWx7bZRA8jI1qjbM';
@@ -1389,16 +1388,18 @@ function renderAccount(){
 }
 function toggleAcctMenu(){var m=document.getElementById('acctMenu');if(m)m.hidden=!m.hidden;}
 async function signOut(){if(SUPA_READY){try{await sb.auth.signOut();}catch(e){}}currentUser=null;renderAccount();buildSavedShelf();showScreen('screen-home');toast('Keluar');}
-var SIGNIN_FORM='<p class="signin-lead">Masuk dulu buat bikin & simpan karakter. Baca panduan & contoh tetap bebas tanpa masuk.</p><input class="signin-email" id="signinEmail" type="email" placeholder="email@kamu.com" autocomplete="email"><button class="submit" onclick="sendMagicLink()">Kirim link masuk</button>';
+var SIGNIN_FORM='<p class="signin-lead">Masuk pakai email & password yang dikasih. Baca panduan & contoh tetap bebas tanpa masuk.</p><input class="signin-email" id="signinEmail" type="email" placeholder="email kamu" autocomplete="email"><input class="signin-email" id="signinPass" type="password" placeholder="password" autocomplete="current-password"><button class="submit" onclick="signIn()">Masuk</button>';
 function openSignin(){document.getElementById('signinBody').innerHTML=SIGNIN_FORM;document.getElementById('signinSheet').hidden=false;}
 function closeSignin(){document.getElementById('signinSheet').hidden=true;}
-async function sendMagicLink(){
+async function signIn(){
   var email=(document.getElementById('signinEmail').value||'').trim();
-  if(!email||email.indexOf('@')<0){toast('Masukin email yang valid');return;}
+  var pass=document.getElementById('signinPass').value||'';
+  if(!email||!pass){toast('Isi email & password');return;}
   if(!SUPA_READY){closeSignin();toast('Mode demo: login dilewati');if(pendingAction){var fn=pendingAction;pendingAction=null;fn();}return;}
-  try{var r=await sb.auth.signInWithOtp({email:email,options:{emailRedirectTo:window.location.origin}});if(r.error){toast('Gagal: '+r.error.message);return;}}
-  catch(e){toast('Gagal kirim link');return;}
-  document.getElementById('signinBody').innerHTML='<div class="signin-sent"><div class="se-ic">\u2709\uFE0F</div><h4>Cek email kamu</h4><p>Kami kirim link masuk ke <b>'+escHtml(email)+'</b>. Klik link itu buat lanjut.</p></div>';
+  try{var r=await sb.auth.signInWithPassword({email:email,password:pass});
+    if(r.error){toast('Email atau password salah');return;}
+    closeSignin();
+  }catch(e){toast('Gagal masuk');}
 }
 function requireAuth(fn){if(!SUPA_READY||currentUser){fn();return;}pendingAction=fn;openSignin();}
 function tryBuat(){requireAuth(function(){loadForm('empty');});}
