@@ -169,6 +169,7 @@ function openPreview(key){
   currentPreviewKey=key;
   var d=EXAMPLES[key];
   document.getElementById('pvName').textContent=d.name.split(' | ')[0];
+  document.getElementById('pvTopName').textContent=d.name.split(' | ')[0];
   document.getElementById('pvEmoji').textContent=d.emoji||'';
   document.getElementById('pvHero').style.background=d.grad||'linear-gradient(150deg,#1c2a2f,#0e1518)';
   var esc=function(t){return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');};
@@ -185,7 +186,7 @@ function openPreview(key){
   html+='<div class="pv-sec"><p class="lbl">Pesan pertama:</p><div class="pv-bubble"><span class="ava" style="background:'+(d.grad||'#1c2a2f')+'">'+(d.emoji||'')+'</span>'+
     '<div class="msg">'+esc(d.pesan)+'</div></div></div>';
   document.getElementById('pvBody').innerHTML=html;
-  document.getElementById('pvBody').scrollTop=0;
+  document.getElementById('pvScroll').scrollTop=0;
   showScreen('screen-preview');
 }
 function openFullExample(){viewExample(currentPreviewKey);}
