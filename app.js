@@ -1,7 +1,7 @@
 /* ---- app: UI, screens, panduan, form, cek, save ---- */
 
-var EXPAND_SVG='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#6B7075" stroke-width="2" stroke-linecap="round"><path d="M8 3H3v5M16 21h5v-5M21 8V3h-5M3 16v5h5"/></svg>';
-document.querySelectorAll('.expand').forEach(function(e){e.innerHTML=EXPAND_SVG+'<span>Perbesar</span>';e.setAttribute('role','button');e.addEventListener('click',function(){openEditor(e);});});
+var EXPAND_SVG='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9.2a3 3 0 015.7 1.1c0 2-3 2.6-3 2.6"/><line x1="12" y1="17.2" x2="12" y2="17.2"/></svg>';
+document.querySelectorAll('.expand').forEach(function(e){e.innerHTML=EXPAND_SVG;e.setAttribute('role','button');e.setAttribute('aria-label','Bantuan');e.addEventListener('click',function(){openEditor(e);});});
 
 var LOCK='<svg viewBox="0 0 24 24" width="22" height="22" fill="#2A2E32"><path d="M12 1a5 5 0 00-5 5v3H6a2 2 0 00-2 2v9a2 2 0 002 2h12a2 2 0 002-2v-9a2 2 0 00-2-2h-1V6a5 5 0 00-5-5zm3 8H9V6a3 3 0 016 0v3z"/></svg>';
 var GLOBE='<svg viewBox="0 0 24 24" width="22" height="22" fill="#2A2E32"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.9 6h-2.5a15.7 15.7 0 00-1.4-3.6A8 8 0 0118.9 8zM12 4c.8 1.1 1.4 2.5 1.8 4h-3.6C10.6 6.5 11.2 5.1 12 4zM4.3 14a7.9 7.9 0 010-4h2.9a17.6 17.6 0 000 4H4.3zm.8 2h2.5c.3 1.3.8 2.5 1.4 3.6A8 8 0 015.1 16zm2.5-8H5.1a8 8 0 013.9-3.6A15.7 15.7 0 007.6 8zM12 20c-.8-1.1-1.4-2.5-1.8-4h3.6c-.4 1.5-1 2.9-1.8 4zm2.2-6H9.8a15.5 15.5 0 010-4h4.4a15.5 15.5 0 010 4zm.4 5.6c.6-1.1 1.1-2.3 1.4-3.6h2.5a8 8 0 01-3.9 3.6zM16.8 14a17.6 17.6 0 000-4h2.9a7.9 7.9 0 010 4h-2.9z"/></svg>';

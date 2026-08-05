@@ -269,11 +269,11 @@
   .sel-pill .chev{position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;}
   .ta-box{position:relative;}
   .ta-box textarea.txt{padding-bottom:48px;}
-  .ta-box .expand{position:absolute;bottom:10px;right:12px;display:inline-flex;align-items:center;gap:6px;
-    background:#fff;border:1.5px solid #D7DBDE;border-radius:10px;padding:7px 12px;font-size:12.5px;font-weight:700;
+  .ta-box .expand{position:absolute;bottom:10px;right:12px;display:inline-flex;align-items:center;justify-content:center;
+    width:30px;height:30px;background:#fff;border:1.5px solid #D7DBDE;border-radius:50%;
     color:var(--sub);cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08);transition:.15s;z-index:2;}
   .ta-box .expand:hover{border-color:var(--teal);color:var(--teal-dark);background:var(--field-focus);}
-  .ta-box .expand svg{width:15px;height:15px;}
+  .ta-box .expand svg{width:18px;height:18px;}
   .hashtag-input{position:relative;}
   .hashtag-input input{padding-right:50px;}
   .hashtag-input .clear{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--ink);padding:6px;}
