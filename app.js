@@ -98,7 +98,7 @@ function openPanduan(i){
   document.getElementById('panTitle').textContent=String(k.n).padStart(2,'0')+' \u00b7 '+k.name;
   var html='<div class="head-badges">'+badgeHtml(k.vis,k.req)+'</div>';
   html+=k.collapsible?renderGrouped(k.blocks):renderBlocks(k.blocks);
-  if(k.field&&k.field!=='gender'){html+='<button class="see-ex" onclick="showPanduanExample('+i+')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>Lihat contoh lengkap (Arkana)</button>';}
+  if(k.field&&k.field!=='gender'){html+='<button class="see-ex" onclick="showPanduanExample('+i+')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>Lihat contoh lengkap</button>';}
   var body=document.getElementById('panBody');body.innerHTML=html;
   var prev=PANDUAN[i-1],next=PANDUAN[i+1];
   document.getElementById('panNav').innerHTML='<div class="pan-nav">'+(prev?navBtn(i-1,'prev'):'<span style="flex:1"></span>')+(next?navBtn(i+1,'next'):'<span style="flex:1"></span>')+'</div>';
@@ -222,17 +222,35 @@ var HINTS={
   f_catatan:"1 kesan/mood buat pembaca (bukan aturan) + trigger warning. Kolom ini nggak dibaca AI."
 };
 var ARKANA_FIELD={f_tagline:"tagline",f_kepribadian:"kepribadian",f_info:"infoPublik",f_bio:"biografi",f_pesan:"pesan",f_npc:"npc",f_pedoman:"pedoman",f_catatan:"catatan"};
-function openExampleModal(title,text){
-  if(Array.isArray(text))text=text.map(function(t){return '#'+t;}).join('   ');
-  document.getElementById('exTitle').textContent=title;
-  var b=document.getElementById('exBody');b.textContent=text;b.scrollTop=0;
+var EX_LIST=[['arkana','Arkana'],['sekar','Sekar Ayu'],['nara','Nara']];
+var exField=null,exLabel='';
+function closeEx(){document.getElementById('exModal').hidden=true;}
+function openExampleChooser(fieldKey,label){
+  exField=fieldKey;exLabel=label||'';
+  document.getElementById('exTitle').textContent=(label?label+' \u2014 ':'')+'pilih contoh';
+  var html='<div class="ex-chooser">';
+  EX_LIST.forEach(function(e){
+    var d=EXAMPLES[e[0]];
+    html+='<button class="ex-choose-btn" onclick="pickExampleChar(\''+e[0]+'\')">'+
+      '<span class="ec-ava" style="background:'+d.grad+'">'+(d.emoji||'')+(d.img?'<img src="'+d.img+'" alt="" onerror="this.remove()">':'')+'</span>'+
+      '<span class="ec-name">'+e[1]+'</span>'+
+      '<svg class="ec-chev" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#C2C7CC" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>';
+  });
+  html+='</div>';
+  var b=document.getElementById('exBody');b.innerHTML=html;b.scrollTop=0;
   document.getElementById('exModal').hidden=false;
 }
-function closeEx(){document.getElementById('exModal').hidden=true;}
-function showPanduanExample(i){var k=PANDUAN[i];if(!k.field)return;openExampleModal('Contoh '+k.name+' \u2014 Arkana',EXAMPLES.arkana[k.field]);}
-function showExampleByField(fid){var fld=ARKANA_FIELD[fid];if(!fld)return;openExampleModal('Contoh \u2014 Arkana',EXAMPLES.arkana[fld]);}
+function pickExampleChar(char){
+  var cname=({arkana:'Arkana',sekar:'Sekar Ayu',nara:'Nara'})[char];
+  var val=EXAMPLES[char][exField];if(Array.isArray(val))val=val.map(function(t){return '#'+t;}).join('   ');
+  document.getElementById('exTitle').textContent=(exLabel?exLabel+' \u2014 ':'')+cname;
+  document.getElementById('exBody').innerHTML='<button class="ex-back" onclick="openExampleChooser(exField,exLabel)">\u2039 Pilih contoh lain</button><div class="ex-text">'+escHtml(val)+'</div>';
+  document.getElementById('exBody').scrollTop=0;
+}
+function showPanduanExample(i){var k=PANDUAN[i];if(!k.field)return;openExampleChooser(k.field,k.name);}
+function showExampleByField(fid){var fld=ARKANA_FIELD[fid];if(!fld)return;openExampleChooser(fld,'');}
 function seeExBtn(i){var k=PANDUAN[i];if(!k.field||k.field==='gender')return '';
-  return '<button class="see-ex" onclick="showPanduanExample('+i+')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>Lihat contoh lengkap (Arkana)</button>';}
+  return '<button class="see-ex" onclick="showPanduanExample('+i+')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>Lihat contoh lengkap</button>';}
 function openPanduanPopup(idx){
   var k=PANDUAN[idx];
   document.getElementById('panModalTitle').textContent=String(k.n).padStart(2,'0')+' \u00b7 '+k.name;
@@ -256,10 +274,9 @@ function openEditor(el){
   if(ht){
     var links='';
     if(ARKANA_FIELD[curTa.id]){
-      links='<div class="h-links">'+
-        '<button class="h-link" onclick="showExampleByField(\''+curTa.id+'\')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>Lihat contoh lengkap</button>'+
-        '<button class="h-link" onclick="showPanduanForField(\''+curTa.id+'\')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h9a3 3 0 013 3v13a2.5 2.5 0 00-2.5-2.5H4z"/><path d="M20 4h-4a3 3 0 00-3 3v13a2.5 2.5 0 012.5-2.5H20z"/></svg>Lihat panduan</button>'+
-      '</div>';
+      var bC=formLocked?'':'<button class="h-link" onclick="showExampleByField(\''+curTa.id+'\')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>Lihat contoh lengkap</button>';
+      var bP='<button class="h-link" onclick="showPanduanForField(\''+curTa.id+'\')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h9a3 3 0 013 3v13a2.5 2.5 0 00-2.5-2.5H4z"/><path d="M20 4h-4a3 3 0 00-3 3v13a2.5 2.5 0 012.5-2.5H20z"/></svg>Lihat panduan</button>';
+      links='<div class="h-links">'+bC+bP+'</div>';
     }
     hint.innerHTML=ht+links;hint.hidden=false;
   } else hint.hidden=true;
