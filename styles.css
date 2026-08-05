@@ -271,7 +271,7 @@
   .ta-box textarea.txt{padding-bottom:48px;}
   .ta-box .expand{position:absolute;bottom:10px;right:12px;display:inline-flex;align-items:center;justify-content:center;
     width:30px;height:30px;background:#fff;border:1.5px solid #D7DBDE;border-radius:50%;
-    color:var(--sub);cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08);transition:.15s;z-index:2;}
+    color:var(--teal);border:1.5px solid var(--teal);;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08);transition:.15s;z-index:2;}
   .ta-box .expand:hover{border-color:var(--teal);color:var(--teal-dark);background:var(--field-focus);}
   .ta-box .expand svg{width:18px;height:18px;}
   .hashtag-input{position:relative;}
