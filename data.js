@@ -9,7 +9,7 @@ var PANDUAN=[
   {n:1,phase:0,name:"Avatar",vis:"pub",req:"wjb",blocks:[
     {p:"Hal pertama yang dilihat orang, sebelum nama dan tagline. Wajahnya harus tetap kebaca walau gambarnya sekecil kuku jempol."},
     {h:"Lakukan"},{bullets:["Wajah jelas & fokus, latar sepi.","Gaya gambar nyambung sama vibe: lembut buat yang hangat, cahaya keras buat yang dingin."]},
-    {h:"Hindari"},{bullets:["Foto artis, idol, atau orang beneran.","Karakter dari anime, film, atau game orang lain.","Tulisan nempel di gambar, atau gambar terlalu vulgar."]},
+    {h:"Hindari"},{bullets:["Tulisan nempel di gambar, atau gambar terlalu vulgar."]},
     {note:"Soal idol AU: ambil dinamika, trope, dan vibe-nya, terus bikin orangnya sendiri. Karakter orisinal yang bisa kamu klaim.",noteType:"tip"}
   ]},
   {n:2,phase:0,name:"Nama karakter",vis:"pub",req:"wjb",field:"name",blocks:[
