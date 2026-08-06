@@ -416,10 +416,12 @@ async function saveCurrent(){
 }
 var SV_GRADS=['linear-gradient(150deg,#1f2d34,#0f4b45)','linear-gradient(150deg,#2a1c3a,#5b3d6b)','linear-gradient(150deg,#16233a,#2c4a6b)','linear-gradient(150deg,#3a1c22,#6b3d3d)','linear-gradient(150deg,#1c2e1f,#3d6b4a)','linear-gradient(150deg,#2e2a1c,#6b5a3d)'];
 function gradFor(id){var h=0;id=String(id);for(var i=0;i<id.length;i++){h=(h*31+id.charCodeAt(i))>>>0;}return SV_GRADS[h%SV_GRADS.length];}
+function svSkeleton(n){var o='';for(var i=0;i<(n||3);i++){o+='<div class="sk-row"><div class="sk-row-head"><div class="sk sk-ava"></div><div class="sk sk-name"></div><div class="sk sk-score"></div></div><div class="sk sk-bio"></div><div class="sk sk-bio short"></div></div>';}return o;}
+function svDetailSkeleton(){var o='<div class="sk sk-hint"></div>';for(var i=0;i<6;i++){o+='<div class="sk-dfield"><div class="sk sk-flbl"></div><div class="sk sk-fval"></div><div class="sk sk-fval short"></div></div>';}return o;}
 async function buildSavedShelf(){
   var box=document.getElementById('savedSection');if(!box)return;
   if(SUPA_READY&&!currentUser){box.innerHTML='';return;}
-  box.innerHTML='<p class="home-sec-label">Karakter saya</p><p class="shelf-loading">Memuat\u2026</p>';
+  box.innerHTML='<p class="home-sec-label">Karakter saya</p><div class="sv-list">'+svSkeleton(3)+'</div>';
   var list=await Store.list();
   if(!list.length){box.innerHTML='';return;}
   var html='<p class="home-sec-label">Karakter saya</p><div class="sv-list">';
@@ -441,7 +443,11 @@ async function buildSavedShelf(){
 var SAVED_FIELDS=[['name','Nama karakter'],['gender','Jenis kelamin'],['hashtags','Hashtag'],['tagline','Tagline'],['kepribadian','Kepribadian'],['info','Informasi publik'],['bio','Biografi'],['pesan','Pesan pertama'],['npc','Karakter pendukung (NPC)'],['gaya','Gaya komunikasi'],['pedoman','Pedoman & batasan'],['catatan','Catatan kreator']];
 function svVal(v){if(Array.isArray(v))return v.map(function(t){return '#'+t;}).join(' ');return v||'';}
 async function openSavedDetail(id){
-  currentSavedId=id;var c=await Store.get(id);if(!c)return;currentSavedChar=c;
+  currentSavedId=id;
+  document.getElementById('savedTitle').textContent='Memuat\u2026';
+  document.getElementById('savedBody').innerHTML=svDetailSkeleton();
+  showScreen('screen-saved');
+  var c=await Store.get(id);if(!c){showScreen('screen-home');return;}currentSavedChar=c;
   document.getElementById('savedTitle').textContent=c.name||'Karakter';
   var html='<p class="saved-hint">Copy tiap kolom, terus paste satu-satu ke form Buat Karakter di app Imely.</p>';
   SAVED_FIELDS.forEach(function(fd){
@@ -451,7 +457,6 @@ async function openSavedDetail(id){
       '<p class="sv-val'+(empty?' empty':'')+'">'+(empty?'(kosong)':escHtml(val))+'</p></div>';
   });
   var b=document.getElementById('savedBody');b.innerHTML=html;b.scrollTop=0;
-  showScreen('screen-saved');
 }
 function copyToClipboard(text){
   try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text);return;}}catch(e){}
