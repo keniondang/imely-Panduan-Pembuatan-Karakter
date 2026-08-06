@@ -481,8 +481,20 @@ function applySaved(v){
   setVal('f_bio',v.bio);setVal('f_pesan',v.pesan);setVal('f_npc',v.npc);setVal('styleTa',v.gaya);
   setVal('f_pedoman',v.pedoman);setVal('f_catatan',v.catatan);
 }
-async function deleteSaved(btn){
-  if(!btn.classList.contains('armed')){btn.classList.add('armed');btn.textContent='Yakin? Hapus';setTimeout(function(){if(btn){btn.classList.remove('armed');btn.textContent='Hapus';}},2500);return;}
+var _confirmCb=null;
+function showConfirm(o){
+  document.getElementById('confirmTitle').textContent=o.title||'Yakin?';
+  document.getElementById('confirmMsg').textContent=o.msg||'';
+  var ok=document.getElementById('confirmOk');ok.textContent=o.okLabel||'Hapus';ok.className='confirm-ok'+(o.danger?' danger':'');
+  _confirmCb=o.onOk||null;
+  document.getElementById('confirmModal').hidden=false;
+}
+function closeConfirm(){document.getElementById('confirmModal').hidden=true;_confirmCb=null;}
+function confirmOk(){var cb=_confirmCb;closeConfirm();if(cb)cb();}
+function deleteSaved(){
+  showConfirm({title:'Hapus karakter?',msg:'Karakter ini bakal dihapus permanen dan nggak bisa dibalikin.',okLabel:'Hapus',danger:true,onOk:doDeleteSaved});
+}
+async function doDeleteSaved(){
   await Store.remove(currentSavedId);await buildSavedShelf();showScreen('screen-home');toast('Karakter dihapus');
 }
 

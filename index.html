@@ -249,7 +249,7 @@
     </header>
     <div class="saved-body" id="savedBody"></div>
     <div class="footer footer-2">
-      <button class="btn-ghost2 danger" onclick="deleteSaved(this)">Hapus</button>
+      <button class="btn-ghost2 danger" onclick="deleteSaved()">Hapus</button>
       <button class="submit" onclick="editSaved()">Edit</button>
     </div>
   </div>
@@ -348,6 +348,18 @@
       <button class="sheet-x" onclick="closeSignin()" aria-label="Tutup"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
     <div class="signin-body" id="signinBody"></div>
+  </div>
+</div>
+
+<!-- confirm dialog -->
+<div class="confirm-overlay" id="confirmModal" hidden onclick="if(event.target===this)closeConfirm()">
+  <div class="confirm-box">
+    <h4 id="confirmTitle"></h4>
+    <p id="confirmMsg"></p>
+    <div class="confirm-actions">
+      <button class="confirm-cancel" onclick="closeConfirm()">Batal</button>
+      <button class="confirm-ok" id="confirmOk" onclick="confirmOk()">Hapus</button>
+    </div>
   </div>
 </div>
 
