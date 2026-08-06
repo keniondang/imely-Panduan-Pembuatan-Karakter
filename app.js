@@ -36,7 +36,7 @@ function buildExampleGrid(){
     var chips=(d.tags||[]).map(function(t){return '<span>'+t+'</span>';}).join('');
     var card=document.createElement('button');card.className='ex-card';card.onclick=function(){openPreview(key);};
     card.innerHTML=
-      '<div class="ex-thumb" style="background:'+d.grad+'"><span class="em">'+d.emoji+'</span>'+(d.img?'<img class="ex-img" src="'+d.img+'" alt="" onerror="this.remove()">':'')+
+      '<div class="ex-thumb" style="background:'+d.grad+'"><span class="em">'+d.emoji+'</span>'+(d.img?'<span class="ex-img" style="background-image:url(&apos;'+d.img+'&apos;)"></span>':'')+
         '<span class="ex-count"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 9 9 0 01-3.9-.9L3 20l1-4.1A8.4 8.4 0 1121 11.5z"/></svg>'+d.count+'</span></div>'+
       '<div class="ex-info"><strong>'+d.name.split(' | ')[0]+'</strong><p class="tl">'+d.tagline+'</p><div class="chips">'+chips+'</div></div>';
     grid.appendChild(card);
@@ -172,7 +172,7 @@ function openPreview(key){
   document.getElementById('pvTopName').textContent=d.name.split(' | ')[0];
   document.getElementById('pvEmoji').textContent=d.emoji||'';
   document.getElementById('pvHero').style.background=d.grad||'linear-gradient(150deg,#1c2a2f,#0e1518)';
-  var himg=document.getElementById('pvHeroImg');if(d.img){himg.src=d.img;himg.hidden=false;}else{himg.hidden=true;himg.removeAttribute('src');}
+  var himg=document.getElementById('pvHeroImg');if(d.img){himg.style.backgroundImage="url('"+d.img+"')";himg.hidden=false;}else{himg.hidden=true;himg.style.backgroundImage='';}
   var esc=function(t){return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');};
   var html='';
   html+='<div class="pv-tagbox"><p class="lbl">Tagline:</p><div class="q">'+
@@ -184,7 +184,7 @@ function openPreview(key){
   html+='<div class="pv-sec"><p class="lbl">Catatan kreator:</p><p class="val">'+esc(d.catatan)+'</p></div>';
   html+='<div class="pv-sec"><p class="lbl">Informasi publik:</p><p class="val">'+esc(d.infoPublik)+'</p></div>';
   html+='<div class="pv-sec"><p class="lbl">Biografi:</p><p class="val">'+esc(d.biografi)+'</p></div>';
-  html+='<div class="pv-sec"><p class="lbl">Pesan pertama:</p><div class="pv-bubble"><span class="ava" style="background:'+(d.grad||'#1c2a2f')+'">'+(d.img?'<img class="ava-img" src="'+d.img+'" alt="" onerror="this.remove()">':(d.emoji||''))+'</span>'+
+  html+='<div class="pv-sec"><p class="lbl">Pesan pertama:</p><div class="pv-bubble"><span class="ava" style="background:'+(d.grad||'#1c2a2f')+'">'+(d.img?'<span class="ava-img" style="background-image:url(&apos;'+d.img+'&apos;)"></span>':(d.emoji||''))+'</span>'+
     '<div class="msg">'+esc(d.pesan)+'</div></div></div>';
   document.getElementById('pvBody').innerHTML=html;
   document.getElementById('pvScroll').scrollTop=0;
@@ -232,7 +232,7 @@ function openExampleChooser(fieldKey,label){
   EX_LIST.forEach(function(e){
     var d=EXAMPLES[e[0]];
     html+='<button class="ex-choose-btn" onclick="pickExampleChar(\''+e[0]+'\')">'+
-      '<span class="ec-ava" style="background:'+d.grad+'">'+(d.emoji||'')+(d.img?'<img src="'+d.img+'" alt="" onerror="this.remove()">':'')+'</span>'+
+      '<span class="ec-ava" style="background:'+d.grad+'">'+(d.emoji||'')+(d.img?'<span class="ec-ava-img" style="background-image:url(&apos;'+d.img+'&apos;)"></span>':'')+'</span>'+
       '<span class="ec-name">'+e[1]+'</span>'+
       '<svg class="ec-chev" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#C2C7CC" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>';
   });
@@ -358,7 +358,7 @@ function dumpFields(v){
 }
 function renderEtalaseCard(d){
   var grad=d.grad||'linear-gradient(150deg,#12908a,#0e5b53)';
-  var h='<div class="et-card"><div class="et-hero" style="background:'+grad+'">'+(d.emoji?'<span class="et-emoji">'+d.emoji+'</span>':'')+(d.img?'<img class="pv-hero-img" src="'+d.img+'" alt="" onerror="this.remove()">':'')+
+  var h='<div class="et-card"><div class="et-hero" style="background:'+grad+'">'+(d.emoji?'<span class="et-emoji">'+d.emoji+'</span>':'')+(d.img?'<span class="pv-hero-img" style="background-image:url(&apos;'+d.img+'&apos;)"></span>':'')+
     '<div class="et-hero-meta"><h3>'+escHtml(d.name||'Karakter kamu')+'</h3></div></div><div class="et-body">';
   h+='<div class="pv-tagbox"><p class="lbl">Tagline:</p><div class="q"><svg width="22" height="22" viewBox="0 0 24 24" fill="#12C4A6"><path d="M7 7h4v4c0 2.5-1.5 4-4 4V13H5V9a2 2 0 012-2zm8 0h4v4c0 2.5-1.5 4-4 4V13h-2V9a2 2 0 012-2z"/></svg><p>'+(d.tagline?escHtml(d.tagline):'\u2014')+'</p></div>';
   if(d.tags&&d.tags.length)h+='<div class="pv-tagchips">'+d.tags.map(function(t){return '<span>'+escHtml(t)+'</span>';}).join('')+'</div>';
@@ -367,7 +367,7 @@ function renderEtalaseCard(d){
   if(d.catatan)h+='<div class="pv-sec"><p class="lbl">Catatan kreator:</p><p class="val">'+escHtml(d.catatan)+'</p></div>';
   if(d.info)h+='<div class="pv-sec"><p class="lbl">Informasi publik:</p><p class="val">'+escHtml(d.info)+'</p></div>';
   if(d.bio)h+='<div class="pv-sec"><p class="lbl">Biografi:</p><p class="val">'+escHtml(d.bio)+'</p></div>';
-  if(d.pesan)h+='<div class="pv-sec"><p class="lbl">Pesan pertama:</p><div class="pv-bubble"><span class="ava" style="background:'+grad+'">'+(d.img?'<img class="ava-img" src="'+d.img+'" alt="" onerror="this.remove()">':(d.emoji||''))+'</span><div class="msg">'+escHtml(d.pesan)+'</div></div></div>';
+  if(d.pesan)h+='<div class="pv-sec"><p class="lbl">Pesan pertama:</p><div class="pv-bubble"><span class="ava" style="background:'+grad+'">'+(d.img?'<span class="ava-img" style="background-image:url(&apos;'+d.img+'&apos;)"></span>':(d.emoji||''))+'</span><div class="msg">'+escHtml(d.pesan)+'</div></div></div>';
   h+='</div></div>';return h;
 }
 function cekKarakter(){

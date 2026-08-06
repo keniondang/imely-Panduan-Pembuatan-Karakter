@@ -31,7 +31,7 @@
   .home-header .acct-right{display:flex;align-items:center;gap:10px;}
   .brand{display:flex;align-items:center;gap:11px;}
   .logo-badge{width:40px;height:40px;border-radius:12px;background:#111315;border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-  .logo-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .logo-img{position:absolute;inset:0;background-size:cover;background-position:center;}
   .logo-badge svg{width:26px;height:26px;}
   .logo-text{font-size:26px;font-weight:800;letter-spacing:-.5px;color:var(--ink);}
   .hdr-add{width:40px;height:40px;border-radius:50%;border:none;background:var(--field);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s;}
@@ -71,9 +71,9 @@
   .ex-thumb{position:relative;height:0;padding-bottom:133.33%;border-radius:16px;overflow:hidden;}
   .ex-thumb .em{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:104px;line-height:1;opacity:.55;}
   .ex-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5),transparent 45%);}
-  .ex-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;}
-  .pv-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;}
-  .ava-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;}
+  .ex-img{position:absolute;inset:0;background-size:cover;background-position:center;z-index:1;}
+  .pv-hero-img{position:absolute;inset:0;background-size:cover;background-position:center;z-index:1;}
+  .ava-img{position:absolute;inset:0;background-size:cover;background-position:center;}
   .ex-count{position:absolute;left:10px;bottom:9px;z-index:2;color:#fff;font-size:12.5px;font-weight:700;display:flex;align-items:center;gap:5px;}
   .ex-count svg{width:15px;height:15px;}
   .ex-info{padding:10px 2px 0;}
@@ -271,7 +271,7 @@
   .ta-box textarea.txt{padding-bottom:48px;}
   .ta-box .expand{position:absolute;bottom:10px;right:12px;display:inline-flex;align-items:center;justify-content:center;
     width:30px;height:30px;background:#fff;border:1.5px solid #D7DBDE;border-radius:50%;
-    color:var(--teal);border:1.5px solid var(--teal);;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08);transition:.15s;z-index:2;}
+    color:var(--sub);cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08);transition:.15s;z-index:2;}
   .ta-box .expand:hover{border-color:var(--teal);color:var(--teal-dark);background:var(--field-focus);}
   .ta-box .expand svg{width:18px;height:18px;}
   .hashtag-input{position:relative;}
@@ -334,7 +334,7 @@
   .ex-choose-btn{display:flex;align-items:center;gap:12px;width:100%;background:var(--white);border:1.5px solid var(--line);border-radius:12px;padding:11px;cursor:pointer;font-family:inherit;transition:.15s;}
   .ex-choose-btn:hover{border-color:var(--teal);background:var(--field-focus);}
   .ec-ava{position:relative;overflow:hidden;width:42px;height:42px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px;}
-  .ec-ava img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .ec-ava .ec-ava-img{position:absolute;inset:0;background-size:cover;background-position:center;}
   .ec-name{flex:1;text-align:left;font-size:15.5px;font-weight:800;color:var(--ink);}
   .ex-back{background:none;border:none;color:var(--teal-dark);font-weight:800;font-size:13.5px;cursor:pointer;font-family:inherit;padding:0 0 12px;}
   .ex-text{white-space:pre-wrap;font-size:14.5px;line-height:1.62;color:var(--ink);}
