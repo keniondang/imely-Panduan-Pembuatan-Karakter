@@ -1,5 +1,3 @@
-/* ---- auth: email + password sign-in ---- */
-
 /* ---------- auth (magic link) ---------- */
 async function initAuth(){
   if(!SUPA_READY){renderAccount();buildSavedShelf();return;}
@@ -17,8 +15,23 @@ function renderAccount(){
       '<div class="acct-menu" id="acctMenu" hidden><p class="acct-email">'+escHtml(em)+'</p><button class="acct-signout" onclick="signOut()">Keluar</button></div></div>';
   }else{a.innerHTML='<button class="masuk-btn" onclick="openSignin()">Masuk</button>';}
 }
-function toggleAcctMenu(){var m=document.getElementById('acctMenu');if(m)m.hidden=!m.hidden;}
-async function signOut(){if(SUPA_READY){try{await sb.auth.signOut();}catch(e){}}currentUser=null;renderAccount();buildSavedShelf();showScreen('screen-home');toast('Keluar');}
+function toggleAcctMenu(){var m=document.getElementById('acctMenu');if(!m)return;if(m.hidden){openAcctMenu(m);}else{closeAcctMenu();}}
+function openAcctMenu(m){
+  m.hidden=false;
+  setTimeout(function(){
+    document.addEventListener('click',acctOutside,true);
+    var sc=document.getElementById('screen-home');if(sc)sc.addEventListener('scroll',closeAcctMenu,{passive:true});
+    window.addEventListener('scroll',closeAcctMenu,{passive:true});
+  },0);
+}
+function closeAcctMenu(){
+  var m=document.getElementById('acctMenu');if(m)m.hidden=true;
+  document.removeEventListener('click',acctOutside,true);
+  var sc=document.getElementById('screen-home');if(sc)sc.removeEventListener('scroll',closeAcctMenu);
+  window.removeEventListener('scroll',closeAcctMenu);
+}
+function acctOutside(e){var w=document.querySelector('.acct-wrap');if(w&&!w.contains(e.target))closeAcctMenu();}
+async function signOut(){closeAcctMenu();if(SUPA_READY){try{await sb.auth.signOut();}catch(e){}}currentUser=null;renderAccount();buildSavedShelf();showScreen('screen-home');toast('Keluar');}
 var SIGNIN_FORM='<p class="signin-lead">Masuk pakai email & password yang dikasih. Baca panduan & contoh tetap bebas tanpa masuk.</p><input class="signin-email" id="signinEmail" type="email" placeholder="email kamu" autocomplete="email"><input class="signin-email" id="signinPass" type="password" placeholder="password" autocomplete="current-password"><button class="submit" onclick="signIn()">Masuk</button>';
 function openSignin(){document.getElementById('signinBody').innerHTML=SIGNIN_FORM;document.getElementById('signinSheet').hidden=false;}
 function closeSignin(){document.getElementById('signinSheet').hidden=true;}
