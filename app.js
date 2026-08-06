@@ -415,12 +415,19 @@ async function buildSavedShelf(){
   box.innerHTML='<p class="home-sec-label">Karakter saya</p><p class="shelf-loading">Memuat\u2026</p>';
   var list=await Store.list();
   if(!list.length){box.innerHTML='';return;}
-  var html='<p class="home-sec-label">Karakter saya</p><div class="sv-grid">';
+  var html='<p class="home-sec-label">Karakter saya</p><div class="sv-list">';
   list.forEach(function(c){
     var full=c.score&&c.score.ok===c.score.total;
-    html+='<button class="sv-card" onclick="openSavedDetail(\''+c.id+'\')" style="background:'+gradFor(c.id)+'">'+
-      '<span class="sv-score-badge'+(full?' full':'')+'">'+(c.score?c.score.ok+'/'+c.score.total:'')+'</span>'+
-      '<span class="sv-overlay"><strong>'+escHtml(c.name)+'</strong></span></button>';
+    var ini=(c.name&&c.name.trim()?c.name.trim()[0].toUpperCase():'?');
+    var bio=(c.values&&c.values.bio)?escHtml(c.values.bio):'';
+    html+='<button class="sv-row" onclick="openSavedDetail(\''+c.id+'\')">'+
+      '<div class="sv-row-head">'+
+        '<span class="sv-ava" style="background:'+gradFor(c.id)+'">'+ini+'</span>'+
+        '<strong class="sv-name">'+escHtml(c.name)+'</strong>'+
+        '<span class="sv-score'+(full?' full':'')+'">'+(c.score?c.score.ok+'/'+c.score.total:'')+'</span>'+
+      '</div>'+
+      (bio?'<p class="sv-bio">'+bio+'</p>':'')+
+    '</button>';
   });
   html+='</div>';box.innerHTML=html;
 }
