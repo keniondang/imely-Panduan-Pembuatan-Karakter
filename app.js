@@ -36,7 +36,7 @@ function buildExampleGrid(){
     var chips=(d.tags||[]).map(function(t){return '<span>'+t+'</span>';}).join('');
     var card=document.createElement('button');card.className='ex-card';card.onclick=function(){openPreview(key);};
     card.innerHTML=
-      '<div class="ex-thumb" style="'+(d.img?'background:url('+d.img+') center/cover, '+d.grad:'background:'+d.grad)+'">'+(d.img?'':'<span class="em">'+d.emoji+'</span>')+
+      '<div class="ex-thumb" style="'+(d.img?'background-image:url(\''+d.img+'\'), '+d.grad+';background-size:cover;background-position:center;':'background:'+d.grad)+'">'+(d.img?'':'<span class="em">'+d.emoji+'</span>')+
         '<span class="ex-count"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 9 9 0 01-3.9-.9L3 20l1-4.1A8.4 8.4 0 1121 11.5z"/></svg>'+d.count+'</span></div>'+
       '<div class="ex-info"><strong>'+d.name.split(' | ')[0]+'</strong><p class="tl">'+d.tagline+'</p><div class="chips">'+chips+'</div></div>';
     grid.appendChild(card);
