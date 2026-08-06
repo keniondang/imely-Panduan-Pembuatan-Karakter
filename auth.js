@@ -32,19 +32,33 @@ function closeAcctMenu(){
   window.removeEventListener('scroll',closeAcctMenu);
 }
 function acctOutside(e){var w=document.querySelector('.acct-wrap');if(w&&!w.contains(e.target))closeAcctMenu();}
-async function signOut(){closeAcctMenu();if(SUPA_READY){try{await sb.auth.signOut();}catch(e){}}currentUser=null;renderAccount();buildSavedShelf();showScreen('screen-home');toast('Keluar');}
+var signingOut=false;
+async function signOut(){
+  if(signingOut)return;
+  signingOut=true;
+  closeAcctMenu();
+  currentUser=null;renderAccount();buildSavedShelf();showScreen('screen-home');toast('Keluar');
+  if(SUPA_READY){try{await sb.auth.signOut();}catch(e){}}
+  signingOut=false;
+}
 var SIGNIN_FORM='<p class="signin-lead">Masuk pakai email & password yang dikasih. Baca panduan & contoh tetap bebas tanpa masuk.</p><input class="signin-email" id="signinEmail" type="email" placeholder="email kamu" autocomplete="email"><input class="signin-email" id="signinPass" type="password" placeholder="password" autocomplete="current-password"><button class="submit" onclick="signIn()">Masuk</button>';
 function openSignin(){document.getElementById('signinBody').innerHTML=SIGNIN_FORM;document.getElementById('signinSheet').hidden=false;}
 function closeSignin(){document.getElementById('signinSheet').hidden=true;}
+var signingIn=false;
 async function signIn(){
+  if(signingIn)return;
   var email=(document.getElementById('signinEmail').value||'').trim();
   var pass=document.getElementById('signinPass').value||'';
   if(!email||!pass){toast('Isi email & password');return;}
-  if(!SUPA_READY){closeSignin();showScreen('screen-home');toast('Mode demo: login dilewati');return;}
-  try{var r=await sb.auth.signInWithPassword({email:email,password:pass});
+  var btn=document.querySelector('#signinBody .submit');
+  signingIn=true;if(btn){btn.disabled=true;btn.textContent='Masuk\u2026';}
+  try{
+    if(!SUPA_READY){closeSignin();showScreen('screen-home');toast('Mode demo: login dilewati');return;}
+    var r=await sb.auth.signInWithPassword({email:email,password:pass});
     if(r.error){toast('Email atau password salah');return;}
     closeSignin();showScreen('screen-home');
   }catch(e){toast('Gagal masuk');}
+  finally{signingIn=false;if(btn){btn.disabled=false;btn.textContent='Masuk';}}
 }
 function requireAuth(fn){if(!SUPA_READY||currentUser){fn();return;}openSignin();}
 function tryBuat(){requireAuth(function(){loadForm('empty');});}
