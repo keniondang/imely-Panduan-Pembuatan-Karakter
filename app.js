@@ -490,12 +490,28 @@ function showConfirm(o){
   document.getElementById('confirmModal').hidden=false;
 }
 function closeConfirm(){document.getElementById('confirmModal').hidden=true;_confirmCb=null;}
-function confirmOk(){var cb=_confirmCb;closeConfirm();if(cb)cb();}
+async function confirmOk(){
+  var cb=_confirmCb;if(!cb){closeConfirm();return;}
+  var ok=document.getElementById('confirmOk');var t=ok.textContent;
+  ok.disabled=true;ok.textContent='Menghapus\u2026';
+  try{await cb();}catch(e){}
+  ok.disabled=false;ok.textContent=t;
+  closeConfirm();
+}
 function deleteSaved(){
   showConfirm({title:'Hapus karakter?',msg:'Karakter ini bakal dihapus permanen dan nggak bisa dibalikin.',okLabel:'Hapus',danger:true,onOk:doDeleteSaved});
 }
+var deletingNow=false;
 async function doDeleteSaved(){
-  await Store.remove(currentSavedId);await buildSavedShelf();showScreen('screen-home');toast('Karakter dihapus');
+  if(deletingNow)return;
+  deletingNow=true;
+  try{
+    await Store.remove(currentSavedId);
+    await buildSavedShelf();
+    showScreen('screen-home');
+    toast('Karakter dihapus');
+  }catch(e){toast('Gagal menghapus');}
+  finally{deletingNow=false;}
 }
 
 buildExampleGrid();
