@@ -178,6 +178,7 @@
   .pan-detail{padding:22px 20px 120px;overflow-y:auto;flex:1;min-height:0;}
   .pan-detail .head-badges{display:flex;gap:8px;margin-bottom:18px;}
   .pan-detail .sec-h{font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--teal-dark);margin:0 0 8px;}
+  .pan-detail .sec-h.danger{color:#D14343;}
   .pan-detail .lead{font-size:15.5px;line-height:1.6;color:var(--ink);margin:0 0 26px;}
   .pan-detail ul{list-style:none;margin:0 0 22px;padding:0;}
   .pan-detail li{position:relative;padding:0 0 0 20px;margin-bottom:12px;font-size:14.5px;line-height:1.55;color:var(--sub);}

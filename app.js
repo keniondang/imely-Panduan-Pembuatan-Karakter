@@ -59,7 +59,7 @@ function buildExampleGrid(){
 })();
 function renderBlocks(blocks){
   return blocks.map(function(b){
-    if(b.h) return '<p class="sec-h">'+b.h+'</p>';
+    if(b.h) return '<p class="sec-h'+(b.hType?' '+b.hType:'')+'">'+b.h+'</p>';
     if(b.p) return '<p class="lead">'+b.p+'</p>';
     if(b.steps) return '<ol class="pan-ol">'+b.steps.map(function(s){return '<li>'+s.t+(s.ex?'<span class="mini-ex">'+s.ex+'</span>':'')+'</li>';}).join('')+'</ol>';
     if(b.bullets) return '<ul>'+b.bullets.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>';

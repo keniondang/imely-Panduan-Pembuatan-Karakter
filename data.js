@@ -9,7 +9,7 @@ var PANDUAN=[
   {n:1,phase:0,name:"Avatar",vis:"pub",req:"wjb",blocks:[
     {p:"Hal pertama yang dilihat orang, sebelum nama dan tagline. Wajahnya harus tetap kebaca walau gambarnya sekecil kuku jempol."},
     {h:"Lakukan"},{bullets:["Wajah jelas & fokus, latar sepi.","Gaya gambar nyambung sama vibe: lembut buat yang hangat, cahaya keras buat yang dingin."]},
-    {h:"Hindari"},{bullets:["Tulisan nempel di gambar, atau gambar terlalu vulgar."]},
+    {h:"Hindari",hType:"danger"},{bullets:["Tulisan nempel di gambar, atau gambar terlalu vulgar."]},
     {note:"Soal idol AU: ambil dinamika, trope, dan vibe-nya, terus bikin orangnya sendiri. Karakter orisinal yang bisa kamu klaim.",noteType:"tip"}
   ]},
   {n:2,phase:0,name:"Nama karakter",vis:"pub",req:"wjb",field:"name",blocks:[
@@ -27,12 +27,12 @@ var PANDUAN=[
     {p:"Ini mesin pencarian, bukan hiasan. Mikirnya kayak orang yang lagi nyari. Pakai 3\u20134 hashtag, susun tiga lapis."},
     {table:{head:["Lapis","Isinya","Contoh"],rows:[["1","Tipe karakter","#tsundere #ceo #mafia"],["2","Genre / latar","#slowburn #kampus #fantasi"],["3","Kebutuhan pembaca","#curhat #healing #angst"]]}},
     {note:"Pakai kata yang orang Indonesia beneran ketik. <b>#bucin</b> jauh lebih sering dicari daripada #romance.",noteType:"tip"},
-    {h:"Hindari"},{bullets:["Hashtag kosong: #bagus, #keren, #hot.","Typo \u2014 satu huruf salah, karaktermu ilang dari pencarian.","Kata yang sensitif atau vulgar."]}
+    {h:"Hindari",hType:"danger"},{bullets:["Hashtag kosong: #bagus, #keren, #hot.","Typo \u2014 satu huruf salah, karaktermu ilang dari pencarian.","Kata yang sensitif atau vulgar."]}
   ]},
   {n:5,phase:0,name:"Tagline",vis:"pub",req:"wjb",field:"tagline",blocks:[
     {p:"Satu baris, dan ini pentingnya: tagline bukan deskripsi tentang karaktermu. Ini kalimat yang keluar langsung dari mulut karakter, kayak dia lagi manggil {{user}} masuk ngobrol. Tugasnya cuma dua: <b>bikin penasaran</b> dan <b>langsung nunjukin mood</b>."},
-    {ex:'"Karakter cowok dingin yang sebenernya baik hati dan punya masa lalu menyakitkan." \u2014 itu sinopsis, semuanya udah dibocorin.',exLabel:"Kurang",exType:"bad"},
-    {ex:'"Gue nggak nunggu siapa-siapa. Lo aja yang selalu telat."\n"Aku bisa mengampunimu. Tapi belum tentu aku mau."',exLabel:"Lebih",exType:"good"},
+    {ex:'"Karakter cowok dingin yang sebenernya baik hati dan punya masa lalu menyakitkan." \u2014 itu sinopsis, semuanya udah dibocorin.',exLabel:"Contoh Buruk",exType:"bad"},
+    {ex:'"Gue nggak nunggu siapa-siapa. Lo aja yang selalu telat."\n"Aku bisa mengampunimu. Tapi belum tentu aku mau."',exLabel:"Contoh Baik",exType:"good"},
     {note:"Bikin 2\u20133 versi dulu, terus pilih yang paling nampol.",noteType:"tip"}
   ]},
 
@@ -113,7 +113,7 @@ var PANDUAN=[
     {p:"Karakter pendukung yang bikin obrolan berubah jadi dunia. Tiap NPC butuh empat hal: <b>nama, peran, sifat, dan sikapnya ke {{user}}</b>."},
     {ex:'Bimo. Sekretaris himpunan, sahabat dari maba. Ceplas-ceplos, satu-satunya yang berani ngeledek Arkana. Suka sama {{user}}.\nLaras. Mantannya Arkana, sekarang ketua BEM. Sopan di depan {{user}}, tajem kalau berdua. Belum selesai.'},
     {h:"Lakukan"},{bullets:["Dua atau tiga aja: satu rival, satu sahabat, satu dari masa lalu.","Tiap NPC bawa konflik atau rahasia.","Biarin NPC ngomong & bertindak sendiri, bahkan pas {{user}} nggak nyebut mereka."]},
-    {h:"Hindari"},{bullets:["NPC yang nggak bikin tegang (itu cuma perabot).","Biarin NPC ngambil keputusan mewakili {{user}}."]},
+    {h:"Hindari",hType:"danger"},{bullets:["NPC yang nggak bikin tegang (itu cuma perabot).","Biarin NPC ngambil keputusan mewakili {{user}}."]},
     {note:"Trik lanjutan: jaga 2\u20133 alur jalan bareng (hubungan sama {{user}}, keluarga/masa lalu, tekanan luar). Kalau satu alur diem, dua lainnya tetep gerak.",noteType:"tip"},
     {h:"\uD83C\uDF0D Dunia & aturan zaman (buat latar non-modern)"},
     {p:"Kalau latarnya bukan masa kini (kerajaan, sejarah, fantasi), tetapin aturan dunianya di awal: apa yang <b>ada</b> dan <b>nggak ada</b>, gimana tiap orang bersikap sesuai zaman, dan biarin dunia tetep gerak (musim ganti, panen, kabar) walau {{user}} lagi diam. Jangan kemasukan benda atau cara pikir modern."},
@@ -141,7 +141,7 @@ var PANDUAN=[
     {ex:'ke {{user}}: gue / lo (berubah jadi aku / kamu di level Gantung)\nke Bimo: gue / lo, lebih santai, sering ngeledek\nke Pak Hartono: saya / Bapak, sopan tapi kaku'},
     {note:"Trik: bikin kata gantinya berubah. Arkana pakai gue/lo, tapi kalau lagi jujur (jarang) dia pakai aku/kamu. Dia nggak sadar, {{user}} yang sadar.",noteType:"tip"}
   ]},
-  {n:12,phase:2,name:"Pedoman & batasan",vis:"dpr",req:"opt",collapsible:true,field:"pedoman",blocks:[
+  {n:12,phase:2,name:"Pedoman",vis:"dpr",req:"opt",collapsible:true,field:"pedoman",blocks:[
     {p:"Aturan keras buat AI. Tulis sebagai perintah \u201Clakukan ini, jangan itu\u201D \u2014 larangan kosong bikin AI jatuh ke penolakan kaku yang ngerusak suasana."},
     {h:"Empat bagian"},
     {steps:[
@@ -162,7 +162,8 @@ var PANDUAN=[
     {p:"Catatan singkat yang dibaca calon pemain di profil. Ini publik, bukan buat AI. Anggap versi pelan dari tagline."},
     {bullets:["Nambahin <b>satu kesan atau mood</b>, bukan aturan.","Boleh selipin <b>trigger warning (TW)</b>."]},
     {ex:'"Arkana lambat kebuka, bakal nyebelin di 20 pesan pertama. Itu sengaja."\nTW: manipulasi emosional, isu ayah yang pergi.'},
-    {note:"Jangan taruh instruksi teknis di sini (panjang respons, format). Itu udah pindah ke Pedoman & batasan, soalnya AI nggak baca kolom ini.",noteType:"jangan"}
+    {note:"Jangan taruh instruksi teknis di sini (panjang respons, format). Itu udah pindah ke Pedoman & batasan, soalnya AI nggak baca kolom ini.",noteType:"jangan"},
+    {note:"Formatnya bebas juga: bisa aturan singkat, catatan 'ini buat siapa', trigger warning, atau pesan santai ke pembaca. Lihat 4 contoh \u2014 tiap karakter beda gaya.",noteType:"tip"}
   ]}
 ];
 
