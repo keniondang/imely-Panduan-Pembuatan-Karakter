@@ -331,7 +331,7 @@
   .modal-hint .h-link:hover{background:var(--teal-soft);}
   .modal-hint .h-link svg{width:15px;height:15px;}
   .modal-ex-body{flex:1;overflow-y:auto;padding:2px 20px 6px;font-size:14.5px;line-height:1.62;color:var(--ink);white-space:pre-wrap;}
-  .modal-ex-body .ex-chooser,.modal-ex-body .ex-text,.modal-ex-body .ex-back{white-space:normal;}
+  .modal-ex-body .ex-chooser,.modal-ex-body .ex-back{white-space:normal;}
   .ex-chooser{display:flex;flex-direction:column;gap:10px;padding-top:4px;}
   .ex-choose-btn{display:flex;align-items:center;gap:12px;width:100%;background:var(--white);border:1.5px solid var(--line);border-radius:12px;padding:11px;cursor:pointer;font-family:inherit;transition:.15s;}
   .ex-choose-btn:hover{border-color:var(--teal);background:var(--field-focus);}
