@@ -31,7 +31,7 @@ function badgeHtml(v,r){
 }
 function buildExampleGrid(){
   var grid=document.getElementById('exGrid');if(!grid)return;
-  ['arkana','sekar','nara'].forEach(function(key){
+  ['arkana','sekar','nara','ren'].forEach(function(key){
     var d=EXAMPLES[key];
     var chips=(d.tags||[]).map(function(t){return '<span>'+t+'</span>';}).join('');
     var card=document.createElement('button');card.className='ex-card';card.onclick=function(){openPreview(key);};
@@ -222,7 +222,7 @@ var HINTS={
   f_catatan:"1 kesan/mood buat pembaca (bukan aturan) + trigger warning. Kolom ini nggak dibaca AI."
 };
 var ARKANA_FIELD={f_tagline:"tagline",f_kepribadian:"kepribadian",f_info:"infoPublik",f_bio:"biografi",f_pesan:"pesan",f_npc:"npc",f_pedoman:"pedoman",f_catatan:"catatan"};
-var EX_LIST=[['arkana','Arkana'],['sekar','Sekar Ayu'],['nara','Nara']];
+var EX_LIST=[['arkana','Arkana'],['sekar','Sekar Ayu'],['nara','Nara'],['ren','Ren']];
 var exField=null,exLabel='';
 function closeEx(){document.getElementById('exModal').hidden=true;}
 function openExampleChooser(fieldKey,label){
@@ -241,7 +241,7 @@ function openExampleChooser(fieldKey,label){
   document.getElementById('exModal').hidden=false;
 }
 function pickExampleChar(char){
-  var cname=({arkana:'Arkana',sekar:'Sekar Ayu',nara:'Nara'})[char];
+  var cname=({arkana:'Arkana',sekar:'Sekar Ayu',nara:'Nara',ren:'Ren'})[char];
   var val=EXAMPLES[char][exField];if(Array.isArray(val))val=val.map(function(t){return '#'+t;}).join('   ');
   document.getElementById('exTitle').textContent=(exLabel?exLabel+' \u2014 ':'')+cname;
   document.getElementById('exBody').innerHTML='<button class="ex-back" onclick="openExampleChooser(exField,exLabel)">\u2039 Pilih contoh lain</button><div class="ex-text">'+escHtml(val)+'</div>';
