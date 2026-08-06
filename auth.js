@@ -1,10 +1,11 @@
+/* ---- auth: email + password sign-in ---- */
+
 /* ---------- auth (magic link) ---------- */
 async function initAuth(){
   if(!SUPA_READY){renderAccount();buildSavedShelf();return;}
   try{var r=await sb.auth.getSession();currentUser=r.data.session?r.data.session.user:null;}catch(e){currentUser=null;}
   renderAccount();buildSavedShelf();
-  sb.auth.onAuthStateChange(function(_e,session){currentUser=session?session.user:null;renderAccount();buildSavedShelf();
-    if(currentUser&&pendingAction){var fn=pendingAction;pendingAction=null;fn();}});
+  sb.auth.onAuthStateChange(function(_e,session){currentUser=session?session.user:null;renderAccount();buildSavedShelf();});
 }
 function renderAccount(){
   var a=document.getElementById('acctArea');if(!a)return;
@@ -39,11 +40,11 @@ async function signIn(){
   var email=(document.getElementById('signinEmail').value||'').trim();
   var pass=document.getElementById('signinPass').value||'';
   if(!email||!pass){toast('Isi email & password');return;}
-  if(!SUPA_READY){closeSignin();toast('Mode demo: login dilewati');if(pendingAction){var fn=pendingAction;pendingAction=null;fn();}return;}
+  if(!SUPA_READY){closeSignin();showScreen('screen-home');toast('Mode demo: login dilewati');return;}
   try{var r=await sb.auth.signInWithPassword({email:email,password:pass});
     if(r.error){toast('Email atau password salah');return;}
-    closeSignin();
+    closeSignin();showScreen('screen-home');
   }catch(e){toast('Gagal masuk');}
 }
-function requireAuth(fn){if(!SUPA_READY||currentUser){fn();return;}pendingAction=fn;openSignin();}
+function requireAuth(fn){if(!SUPA_READY||currentUser){fn();return;}openSignin();}
 function tryBuat(){requireAuth(function(){loadForm('empty');});}
