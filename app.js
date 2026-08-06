@@ -25,7 +25,7 @@ function setAdv(open){var adv=document.getElementById('advBlock');if(!adv)return
 
 /* ---------- panduan (13 kolom) ---------- */
 function badgeHtml(v,r){
-  var vis=v==='pub'?'<span class="badge pub">\uD83D\uDC41 Publik</span>':'<span class="badge dpr">\uD83D\uDD12 Cuma AI</span>';
+  var vis=v==='pub'?'<span class="badge pub">👁 Publik</span>':v==='set'?'<span class="badge opt">⚙️ Setelan</span>':'<span class="badge dpr">🔒 Cuma AI</span>';
   var req=r==='wjb'?'<span class="badge wjb">Wajib</span>':'<span class="badge opt">Opsional</span>';
   return vis+req;
 }
@@ -145,8 +145,8 @@ function applyExample(d){
   setVal('f_npc',d.npc);
   setVal('styleTa',d.gaya);
   (d.chips||[]).forEach(function(t){document.querySelectorAll('#chips .chip').forEach(function(c){if(c.textContent.trim()===t)c.classList.add('on');});});
-  setVal('f_pedoman',d.pedoman);
   setVal('f_catatan',d.catatan);
+  pickPrivByVal(d.privasi==='Publik'?'public':'private');
 }
 var currentFormKey=null;
 function loadForm(key){

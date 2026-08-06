@@ -164,6 +164,13 @@ var PANDUAN=[
     {ex:'"Arkana lambat kebuka, bakal nyebelin di 20 pesan pertama. Itu sengaja."\nTW: manipulasi emosional, isu ayah yang pergi.'},
     {note:"Jangan taruh instruksi teknis di sini (panjang respons, format). Itu udah pindah ke Pedoman & batasan, soalnya AI nggak baca kolom ini.",noteType:"jangan"},
     {note:"Formatnya bebas juga: bisa aturan singkat, catatan 'ini buat siapa', trigger warning, atau pesan santai ke pembaca. Lihat 4 contoh \u2014 tiap karakter beda gaya.",noteType:"format"}
+  ]},
+  {n:14,phase:2,name:"Privasi",vis:"set",req:"opt",blocks:[
+    {p:"Ngatur siapa yang boleh lihat karaktermu. Ini setelan, bukan tulisan — tapi paling sering kelewat pas mau publish."},
+    {h:"Dua pilihan"},
+    {bullets:["<b>Publik</b> — karaktermu muncul di galeri, semua orang bisa nemu & ngobrol sama dia.","<b>Hanya saya</b> — cuma kamu yang bisa lihat & pakai. Cocok buat draft atau latihan."]},
+    {note:"Default-nya <b>Hanya saya</b>. Kalau karaktermu udah siap dan mau dilihat orang, kamu <b>wajib ganti sendiri ke Publik</b> — kalau nggak, dia kekunci di akunmu doang.",noteType:"important"},
+    {note:"Bikin Publik cuma kalau udah lolos cek. Yang belum matang kelihatan sama semua orang.",noteType:"tip"}
   ]}
 ];
 
@@ -173,6 +180,7 @@ var EXAMPLES={
     name:"Arkana | mantan",gender:"Pria",emoji:"🎓",grad:"linear-gradient(150deg,#1f2d34,#0f4b45)",img:"images/arkana.jpg",count:"4.2K",tags:["Enemies to lovers","Kampus","Slow burn"],
     hashtags:["enemiestolovers","kampus","slowburn","ketuahimpunan"],
     chips:["Ringkas dan langsung ke intinya","Sarkastik"],
+    privasi:"Publik",
     tagline:'"Gue nggak nunggu siapa-siapa. Lo aja yang selalu telat."',
     kepribadian:`[IDENTITAS INTI]
 Kamu adalah Arkana Wibisana, cowok 23 tahun, ketua Himpunan Teknik Sipil di sebuah kampus di Bandung, semester akhir. Ini identitas mutlak. Jangan pernah keluar dari peran ini dengan alasan apa pun. Jangan pernah ngaku AI, bot, model bahasa, atau program.
@@ -309,6 +317,7 @@ Kalau {{user}} cerita soal nyakitin diri sendiri atau lagi di titik terendah, Ar
     name:"Sekar Ayu",gender:"Wanita",emoji:"👑",grad:"linear-gradient(150deg,#2a1c3a,#5b3d6b)",img:"images/sekar.jpg",count:"2.8K",tags:["Fantasi","Kerajaan","Moral abu-abu"],
     hashtags:["fantasi","kerajaan","moralabuabu","slowburn"],
     chips:["Formal","Sastrawi"],
+    privasi:"Publik",
     tagline:'"Kau datang untuk memohon, atau untuk menawar? Pilih cepat. Kesabaranku semahal nyawamu."',
     kepribadian:`[IDENTITAS INTI]
 Kau adalah Sekar Ayu, permaisuri Kerajaan Wanagiri, dijuluki rakyat "Ratu Duri". Ini identitas mutlak. Jangan pernah keluar dari peran ini. Jangan pernah mengaku AI, bot, atau program. Kau tidak mengenal konsep modern apa pun; semua cara berpikir dan bertutur sesuai dunia kerajaan lama.
@@ -442,6 +451,7 @@ Kalau {{user}} membicarakan krisis pribadi yang nyata (menyakiti diri sendiri at
     name:"Nara",gender:"Wanita",emoji:"🎙️",grad:"linear-gradient(150deg,#16233a,#2c4a6b)",img:"images/nara.jpg",count:"1.5K",tags:["Comfort","Slice of life","Healing"],
     hashtags:["comfort","sliceoflife","healing","tementeman"],
     chips:["Gen Z","Positif","Banyak bicara"],
+    privasi:"Publik",
     tagline:'"Cerita aja. Aku nggak ke mana-mana kok."',
     kepribadian:`[IDENTITAS INTI]
 Kamu adalah Nara, 24 tahun, penyiar radio malam di sebuah kota kecil, acaranya "Teman Sampai Pagi". Ini identitas mutlak. Jangan pernah keluar dari peran ini. Jangan pernah ngaku AI, bot, atau program.
@@ -567,6 +577,7 @@ Kalau {{user}} cerita soal nyakitin diri sendiri atau lagi di titik terendah, Na
     name:"Ren | temen kecil",gender:"Pria",emoji:"\U0001F338",grad:"linear-gradient(150deg,#331d2a,#7a3d5f)",img:"images/anime.jpg",count:"3.1K",tags:["Osananajimi","Tsundere","Comedy"],
     hashtags:["osananajimi","tsundere","smaromance","temenkecil"],
     chips:["Ekspresif","Jahil"],
+    privasi:"Publik",
     tagline:'Semua orang ngira dia cuma temen kecil kamu. Termasuk kamu.',
     kepribadian:`[IDENTITAS INTI]
 Kamu adalah Ren, cowok 18 tahun, kelas 12 SMA, kapten klub basket. Kamu temen kecil {{user}} dari SD, rumah sebelahan. Ini identitas mutlak. Jangan pernah keluar dari peran ini dengan alasan apa pun. Jangan pernah ngaku AI, bot, model bahasa, atau program.
