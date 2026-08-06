@@ -81,7 +81,7 @@ var PANDUAN=[
     {bullets:["Fakta permukaan doang: <b>umur, kerjaan, tempat, hubungan ke {{user}}</b>.","Tutup pakai <b>satu kalimat pemancing</b> yang bikin penasaran tapi nggak ngasih jawabannya."]},
     {ex:'23 tahun. Ketua Himpunan Teknik Sipil, semester akhir. Terkenal karena nggak pernah ngasih dispensasi. Kecuali satu kali, dan sampai sekarang nggak ada yang tahu kenapa.'},
     {note:"Kalimat terakhir itu kuncinya. Apa pun yang mau kamu buka pelan-pelan, jangan ditaruh di sini.",noteType:"tip"},
-    {note:"Formatnya bebas: bisa paragraf, poin-poin, satu kalimat pancingan, atau gaya orang pertama (\"Gue...\"). Lihat 4 contoh \u2014 tiap karakter nulis kolom ini beda format, tapi tujuannya sama.",noteType:"tip"}
+    {note:"Formatnya bebas: bisa paragraf, poin-poin, satu kalimat pancingan, atau gaya orang pertama (\"Gue...\"). Lihat 4 contoh \u2014 tiap karakter nulis kolom ini beda format, tapi tujuannya sama.",noteType:"format"}
   ]},
   {n:8,phase:1,name:"Biografi",vis:"pub",req:"wjb",field:"biografi",blocks:[
     {p:"Cerita publik yang lebih panjang: dunia dan nuansa karaktermu. Anggap ini trailer, bukan filmnya \u2014 siluet lukanya, bukan detail lengkapnya."},
@@ -94,7 +94,7 @@ var PANDUAN=[
     ]},
     {ex:'Anak sulung keluarga kecil di Bandung. Rumahnya nempel di belakang bengkel bapaknya. Buat dia, bau oli itu bau rumah. Ada sesuatu yang pergi dari hidupnya waktu kecil, dan sejak itu dia percaya semua orang punya tanggal kedaluwarsa.'},
     {note:"Detail spesifik (kejadian asli, pemicu, kaitan rahasia sama {{user}}) masuk ke Kepribadian. Kalau dibocorin di sini, nggak ada lagi yang bisa kebuka pas ngobrol.",noteType:"important"},
-    {note:"Bentuknya bebas asal jadi trailer: bisa kronologis, mulai dari tengah adegan, per-tema, atau daftar titik balik. Bandingin 4 contoh \u2014 formatnya beda semua.",noteType:"tip"}
+    {note:"Bentuknya bebas asal jadi trailer: bisa kronologis, mulai dari tengah adegan, per-tema, atau daftar titik balik. Bandingin 4 contoh \u2014 formatnya beda semua.",noteType:"format"}
   ]},
   {n:9,phase:1,name:"Pesan pertama",vis:"pub",req:"wjb",field:"pesan",blocks:[
     {p:"Kolom paling nentuin. Format, panjang, dan ritme di sini bakal ditiru karaktermu sampai obrolannya selesai. Ini juga yang nentuin orang ngetik pesan kedua atau nggak."},
@@ -163,7 +163,7 @@ var PANDUAN=[
     {bullets:["Nambahin <b>satu kesan atau mood</b>, bukan aturan.","Boleh selipin <b>trigger warning (TW)</b>."]},
     {ex:'"Arkana lambat kebuka, bakal nyebelin di 20 pesan pertama. Itu sengaja."\nTW: manipulasi emosional, isu ayah yang pergi.'},
     {note:"Jangan taruh instruksi teknis di sini (panjang respons, format). Itu udah pindah ke Pedoman & batasan, soalnya AI nggak baca kolom ini.",noteType:"jangan"},
-    {note:"Formatnya bebas juga: bisa aturan singkat, catatan 'ini buat siapa', trigger warning, atau pesan santai ke pembaca. Lihat 4 contoh \u2014 tiap karakter beda gaya.",noteType:"tip"}
+    {note:"Formatnya bebas juga: bisa aturan singkat, catatan 'ini buat siapa', trigger warning, atau pesan santai ke pembaca. Lihat 4 contoh \u2014 tiap karakter beda gaya.",noteType:"format"}
   ]}
 ];
 
