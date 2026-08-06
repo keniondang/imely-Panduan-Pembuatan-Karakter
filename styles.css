@@ -209,6 +209,7 @@
   .pan-note.tip{background:#FFF6E6;color:#8A5B00;border-left-color:#E0A100;}
   .pan-note.important{background:#F3ECFF;color:#6E3FB8;border-left-color:#8A5CE0;}
   .pan-note.jangan{background:#FDEDED;color:#B02525;border-left-color:#D14343;}
+  .pan-note.format{background:var(--teal-soft);color:#0c6b5c;border-left-color:var(--teal);}
   .pan-note b{font-weight:800;}
   .ex-box.good{background:#E9F7EF;border-left-color:#1E9E63;}
   .ex-box.good .lbl{color:#1E9E63;}
