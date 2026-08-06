@@ -400,12 +400,19 @@ var lastCek=null,editingSavedId=null,currentSavedId=null,formLocked=false;
 function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},1600);}
 
 /* ---------- save / shelf / detail ---------- */
+var savingNow=false;
 async function saveCurrent(){
-  if(!lastCek)return;
-  var obj={id:editingSavedId||null,name:(lastCek.values.name||'Tanpa nama'),score:{ok:lastCek.ok,total:lastCek.total},values:lastCek.values,savedAt:Date.now()};
-  if(!obj.id&&!(SUPA_READY&&currentUser))obj.id='c'+Date.now();
-  var id=await Store.save(obj);editingSavedId=id||obj.id;
-  await buildSavedShelf();showScreen('screen-home');toast('Karakter tersimpan');
+  if(!lastCek||savingNow)return;
+  savingNow=true;
+  var btn=document.querySelector('#ckFooter .submit');
+  if(btn){btn.disabled=true;btn.textContent='Menyimpan\u2026';}
+  try{
+    var obj={id:editingSavedId||null,name:(lastCek.values.name||'Tanpa nama'),score:{ok:lastCek.ok,total:lastCek.total},values:lastCek.values,savedAt:Date.now()};
+    if(!obj.id&&!(SUPA_READY&&currentUser))obj.id='c'+Date.now();
+    var id=await Store.save(obj);editingSavedId=id||obj.id;
+    await buildSavedShelf();showScreen('screen-home');toast('Karakter tersimpan');
+  }catch(e){toast('Gagal menyimpan');}
+  finally{savingNow=false;if(btn){btn.disabled=false;btn.textContent='Simpan karakter';}}
 }
 var SV_GRADS=['linear-gradient(150deg,#1f2d34,#0f4b45)','linear-gradient(150deg,#2a1c3a,#5b3d6b)','linear-gradient(150deg,#16233a,#2c4a6b)','linear-gradient(150deg,#3a1c22,#6b3d3d)','linear-gradient(150deg,#1c2e1f,#3d6b4a)','linear-gradient(150deg,#2e2a1c,#6b5a3d)'];
 function gradFor(id){var h=0;id=String(id);for(var i=0;i<id.length;i++){h=(h*31+id.charCodeAt(i))>>>0;}return SV_GRADS[h%SV_GRADS.length];}

@@ -310,6 +310,8 @@
     padding:19px;cursor:pointer;box-shadow:0 8px 22px -8px rgba(18,196,166,.7);transition:.16s;}
   .submit:hover{background:var(--teal-dark);}
   .submit:active{transform:scale(.985);}
+  .submit:disabled{opacity:.6;cursor:default;box-shadow:none;}
+  .submit:disabled:hover{background:var(--teal);}
 
   /* editor popup */
   .modal-overlay[hidden]{display:none;}
