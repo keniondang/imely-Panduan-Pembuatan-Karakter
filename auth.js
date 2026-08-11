@@ -1,4 +1,4 @@
-/* ---- auth: email + password sign-in ---- */
+/* ---- auth: email + password sign-in. All strings via t(). ---- */
 
 /* ---------- auth (magic link) ---------- */
 async function initAuth(){
@@ -11,10 +11,10 @@ function renderAccount(){
   var a=document.getElementById('acctArea');if(!a)return;
   if(!SUPA_READY){a.innerHTML='';return;}
   if(currentUser){
-    var em=currentUser.email||'akun';var ini=(em[0]||'?').toUpperCase();
+    var em=currentUser.email||t('auth.account');var ini=(em[0]||'?').toUpperCase();
     a.innerHTML='<div class="acct-wrap"><button class="avatar-btn" onclick="toggleAcctMenu()">'+ini+'</button>'+
-      '<div class="acct-menu" id="acctMenu" hidden><p class="acct-email">'+escHtml(em)+'</p><button class="acct-signout" onclick="signOut()">Keluar</button></div></div>';
-  }else{a.innerHTML='<button class="masuk-btn" onclick="openSignin()">Masuk</button>';}
+      '<div class="acct-menu" id="acctMenu" hidden><p class="acct-email">'+escHtml(em)+'</p><button class="acct-signout" onclick="signOut()">'+escHtml(t('auth.signOut'))+'</button></div></div>';
+  }else{a.innerHTML='<button class="masuk-btn" onclick="openSignin()">'+escHtml(t('auth.signIn'))+'</button>';}
 }
 function toggleAcctMenu(){var m=document.getElementById('acctMenu');if(!m)return;if(m.hidden){openAcctMenu(m);}else{closeAcctMenu();}}
 function openAcctMenu(m){
@@ -37,28 +37,33 @@ async function signOut(){
   if(signingOut)return;
   signingOut=true;
   closeAcctMenu();
-  currentUser=null;renderAccount();buildSavedShelf();showScreen('screen-home');toast('Keluar');
+  currentUser=null;renderAccount();buildSavedShelf();showScreen('screen-home');toast(t('toast.signedOut'));
   if(SUPA_READY){try{await sb.auth.signOut();}catch(e){}}
   signingOut=false;
 }
-var SIGNIN_FORM='<p class="signin-lead">Masuk pakai email & password yang dikasih. Baca panduan & contoh tetap bebas tanpa masuk.</p><input class="signin-email" id="signinEmail" type="email" placeholder="email kamu" autocomplete="email"><input class="signin-email" id="signinPass" type="password" placeholder="password" autocomplete="current-password"><button class="submit" onclick="signIn()">Masuk</button>';
-function openSignin(){document.getElementById('signinBody').innerHTML=SIGNIN_FORM;document.getElementById('signinSheet').hidden=false;}
+function signinForm(){
+  return '<p class="signin-lead">'+escHtml(t('auth.lead'))+'</p>'+
+    '<input class="signin-email" id="signinEmail" type="email" placeholder="'+escHtml(t('auth.email.ph'))+'" autocomplete="email">'+
+    '<input class="signin-email" id="signinPass" type="password" placeholder="'+escHtml(t('auth.pass.ph'))+'" autocomplete="current-password">'+
+    '<button class="submit" onclick="signIn()">'+escHtml(t('auth.signIn'))+'</button>';
+}
+function openSignin(){document.getElementById('signinBody').innerHTML=signinForm();document.getElementById('signinSheet').hidden=false;}
 function closeSignin(){document.getElementById('signinSheet').hidden=true;}
 var signingIn=false;
 async function signIn(){
   if(signingIn)return;
   var email=(document.getElementById('signinEmail').value||'').trim();
   var pass=document.getElementById('signinPass').value||'';
-  if(!email||!pass){toast('Isi email & password');return;}
+  if(!email||!pass){toast(t('toast.needCreds'));return;}
   var btn=document.querySelector('#signinBody .submit');
-  signingIn=true;if(btn){btn.disabled=true;btn.textContent='Masuk\u2026';}
+  signingIn=true;if(btn){btn.disabled=true;btn.textContent=t('auth.signingIn');}
   try{
-    if(!SUPA_READY){closeSignin();showScreen('screen-home');toast('Mode demo: login dilewati');return;}
+    if(!SUPA_READY){closeSignin();showScreen('screen-home');toast(t('toast.demoLogin'));return;}
     var r=await sb.auth.signInWithPassword({email:email,password:pass});
-    if(r.error){toast('Email atau password salah');return;}
+    if(r.error){toast(t('toast.badCreds'));return;}
     closeSignin();showScreen('screen-home');
-  }catch(e){toast('Gagal masuk');}
-  finally{signingIn=false;if(btn){btn.disabled=false;btn.textContent='Masuk';}}
+  }catch(e){toast(t('toast.signInFail'));}
+  finally{signingIn=false;if(btn){btn.disabled=false;btn.textContent=t('auth.signIn');}}
 }
 function requireAuth(fn){if(!SUPA_READY||currentUser){fn();return;}openSignin();}
 function tryBuat(){requireAuth(function(){loadForm('empty');});}

@@ -1,0 +1,250 @@
+/* ---- lang-en: English market UI strings ----
+   Field labels below are the ones supplied from the English Imely build.
+   Creators copy field-by-field between this sandbox and the real app, so
+   these must stay in sync with the app. Two labels were not supplied and
+   are marked TODO CONFIRM.
+   Spelling follows the supplied strings (British: "behaviour", "localise").
+*/
+
+I18N.registerUI('en', {
+
+  /* ---------- shell ---------- */
+  'app.title'          : 'Character Workshop',
+  'app.kicker'         : 'Creator Guide',
+  'app.hero.sub'       : 'Learn every field from characters that actually work, then build one from scratch.',
+  'lang.picker'        : 'Language',
+
+  'nav.guide'          : 'Guide',
+  'nav.examples'       : 'Examples',
+  'nav.create'         : 'Build',
+  'nav.back'           : 'Back',
+  'nav.close'          : 'Close',
+  'nav.more'           : 'More',
+  'nav.next'           : 'Next',
+  'nav.prev'           : 'Previous',
+
+  /* ---------- home ---------- */
+  'home.sec.start'     : 'Start here',
+  'home.sec.examples'  : 'Full examples',
+  'home.sec.try'       : 'Try it yourself',
+  'home.sec.mine'      : 'My characters',
+  'home.guide.title'   : 'The 14 fields',
+  'home.guide.sub'     : 'Every field: what it does + how to structure it',
+  'home.practice.title': 'Start from scratch',
+  'home.practice.sub'  : 'A blank form to fill in yourself',
+  'home.addAria'       : 'Build a character',
+
+  /* ---------- guide ---------- */
+  'guide.title'        : 'The 14 Fields',
+  'guide.legend.title' : 'Formatting rules',
+  'guide.legend.action': 'asterisks for action and narration',
+  'guide.legend.speech': 'quote marks for dialogue',
+  'guide.legend.user'  : 'swapped for the player\u2019s name automatically',
+  'guide.colTitle'     : 'Field',
+  'guide.seeExample'   : 'See a full example',
+  'guide.seeGuide'     : 'See the guide',
+
+  'badge.public'       : '\uD83D\uDC41 Public',
+  'badge.setting'      : '\u2699\uFE0F Setting',
+  'badge.aiOnly'       : '\uD83D\uDD12 AI only',
+  'badge.required'     : 'Required',
+  'badge.optional'     : 'Optional',
+
+  /* ---------- form: titles & chrome ---------- */
+  'form.title.create'  : 'Build a Character',
+  'form.title.practice': 'Practice',
+  'form.title.example' : 'Example: {name}',
+  'form.title.edit'    : 'Editing: {name}',
+  'form.reqNote'       : '(*) Required',
+  'form.chars'         : '{n} characters',
+  'form.check'         : 'Check character',
+  'form.checkExample'  : 'Check this example',
+  'form.advanced'      : 'Advanced settings',
+  'form.addHashtag'    : 'Add hashtag',
+  'form.hashtag.ph'    : 'One hashtag...',
+  'form.remove'        : 'Remove',
+  'form.suggest'       : 'Suggestions:',
+
+  /* ---------- form: the 14 fields ---------- */
+  'field.avatar'          : 'Avatar',                          /* TODO CONFIRM against EN app */
+  'field.name'            : 'Character name:',
+  'field.name.ph'         : 'Character name...',
+  'field.gender'          : 'Gender:',
+  'field.hashtag'         : 'Hashtag:',
+  'field.hashtag.hint'    : 'So people can actually find your character.',
+  'field.tagline'         : 'Tagline:',
+  'field.tagline.ph'      : 'One line that makes someone want to open the chat...',
+  'field.personality'     : 'Personality:',
+  'field.personality.hint': 'Who the character is underneath',
+  'field.personality.ph'  : 'What the character is really like...',
+  'field.publicInfo'      : 'Public information:',
+  'field.publicInfo.hint' : 'Shown on the character profile',
+  'field.publicInfo.ph'   : 'e.g. age, job, what they look like...',
+  'field.opener'          : 'Conversation opener:',
+  'field.opener.hint'     : 'The setup and the first message someone sees when they open the chat.',
+  'field.biography'       : 'Biography:',
+  'field.biography.ph'    : 'Where the character came from...',
+  'field.firstMessage'    : 'First message:',
+  'field.firstMessage.ph' : 'Set the scene + their opening line. *Asterisks* for action, "quotes" for speech...',
+  'field.npc'             : 'NPC:',
+  'field.npc.ph'          : 'e.g. a best friend, a rival, family...',
+  'field.style'           : 'Communication style:',
+  'field.style.ph'        : 'e.g. warm, close, drops your name when they mean it...',
+  'field.guidelines'      : 'Behaviour guidelines & boundaries:',
+  'field.guidelines.ph'   : 'What this character must never do...',
+  'field.creatorNotes'    : 'Creator notes:',                  /* TODO CONFIRM against EN app */
+  'field.creatorNotes.hint':'A short note readers see on the profile before they start chatting.',
+  'field.creatorNotes.ph' : 'A note above the character...',
+  'field.privacy'         : 'Privacy',
+
+  'label.name'         : 'Character name',
+  'label.gender'       : 'Gender',
+  'label.hashtag'      : 'Hashtag',
+  'label.tagline'      : 'Tagline',
+  'label.personality'  : 'Personality',
+  'label.publicInfo'   : 'Public information',
+  'label.biography'    : 'Biography',
+  'label.firstMessage' : 'First message',
+  'label.npc'          : 'NPC',
+  'label.style'        : 'Communication style',
+  'label.guidelines'   : 'Behaviour guidelines & boundaries',
+  'label.creatorNotes' : 'Creator notes',
+
+  /* ---------- gender values ---------- */
+  'gender.pick'        : 'Select...',
+  'gender.male'        : 'Male',
+  'gender.female'      : 'Female',
+  'gender.other'       : 'Other',
+
+  /* ---------- communication-style chips ---------- */
+  'chip.neutral'       : 'Neutral',
+  'chip.concise'       : 'Concise and to the point',
+  'chip.formal'        : 'Formal',
+  'chip.sarcastic'     : 'Sarcastic',
+  'chip.genz'          : 'Gen Z',
+  'chip.literary'      : 'Literary',
+  'chip.talkative'     : 'Talkative',
+  'chip.positive'      : 'Positive',
+
+  /* ---------- privacy ---------- */
+  'priv.title'         : 'Privacy',
+  'priv.private'       : 'Only me',
+  'priv.private.desc'  : 'Only you can see this one. Even someone with the link can\u2019t open it.',
+  'priv.public'        : 'Public',
+  'priv.public.desc'   : 'Anyone on Imely can find and chat with them.',
+
+  /* ---------- field hints in the editor popup ---------- */
+  'hint.tagline'       : 'A line the character says, not a description of them. Make it a hook and set the mood in one go.',
+  'hint.personality'   : 'The engine room: 3 traits written as feelings, 1 want + 1 fear, a reaction table (5 rows minimum), the real secret, then the 7 closeness levels.',
+  'hint.publicInfo'    : 'Surface facts (age, job, where) + one line that hooks. Don\u2019t spend the secret here.',
+  'hint.biography'     : 'Trailer, not the film: origin \u2192 the shape of the big event \u2192 what they believe now \u2192 where they are today.',
+  'hint.firstMessage'  : '[Place] + [what they\u2019re doing] + [where {{user}} is] + [why you\u2019re both here]. Use *action* and "speech", end on a hook.',
+  'hint.npc'           : '2\u20133 NPCs. Each one: name, role, temperament, how they treat {{user}} + a conflict. NPCs never decide anything for {{user}}.',
+  'hint.guidelines'    : 'Write it as \u201Cdo this, never that\u201D. A crisis rule is mandatory. Give reply length as a number.',
+  'hint.creatorNotes'  : 'One impression or mood for the reader (not a rule) + any trigger warnings. The AI never reads this field.',
+
+  /* ---------- editor / example popups ---------- */
+  'modal.help'         : 'Help',
+  'modal.cancel'       : 'Cancel',
+  'modal.done'         : 'Done',
+  'modal.close'        : 'Close',
+  'ex.pick'            : 'pick an example',
+  'ex.pickWith'        : '{label} \u2014 pick an example',
+  'ex.other'           : '\u2039 Pick a different one',
+  'ex.label'           : 'Example',
+
+  /* ---------- preview ---------- */
+  'preview.tagline'      : 'Tagline:',
+  'preview.creator'      : 'Creator:',
+  'preview.creatorNotes' : 'Creator notes:',
+  'preview.publicInfo'   : 'Public information:',
+  'preview.biography'    : 'Biography:',
+  'preview.firstMessage' : 'First message:',
+  'preview.seeFull'      : 'See the full example',
+  'preview.yourChar'     : 'Your character',
+
+  /* ---------- check screen ---------- */
+  'check.title'        : 'Check results',
+  'check.section'      : 'Check results',
+  'check.score'        : '<strong>{ok} of {total}</strong> required points done',
+  'check.scoreWarn'    : ' \u00b7 {warn} still to fix',
+  'check.seeAll'       : 'See everything you wrote',
+  'check.guideLink'    : 'Guide',
+  'check.back'         : 'Back',
+  'check.backFix'      : 'Back & finish it',
+  'check.save'         : 'Save character',
+  'check.saving'       : 'Saving\u2026',
+  'check.dumpEmpty'    : '(still empty)',
+
+  'check.filled'       : 'Done.',
+  'check.blank'        : 'Still empty.',
+  'check.gender.ok'    : 'Selected.',
+  'check.gender.warn'  : 'Not selected yet.',
+  'check.personality.label' : 'Personality filled in',
+  'check.personality.warn'  : 'The single most important field, and it\u2019s empty.',
+  'check.reaction.label'    : 'Reaction table (5 minimum)',
+  'check.reaction.ok'       : '{n} trigger\u2192response rows.',
+  'check.reaction.warn'     : 'Only {n} rows so far. Aim for 5.',
+  'check.wantfear.label'    : 'Want & fear',
+  'check.wantfear.ok'       : 'Both look present.',
+  'check.wantfear.warn'     : 'Can\u2019t see 1 want + 1 fear yet.',
+  'check.bioLong.label'     : 'Biography is running long',
+  'check.bioLong.warn'      : 'A silhouette is enough \u2014 keep the full detail in Personality.',
+  'check.format.label'      : 'Format: *action* & "speech"',
+  'check.format.ok'         : 'Both are being used.',
+  'check.format.warn'       : 'Use *asterisks* for action and "quotes" for speech.',
+  'check.register.label'    : 'Register stays consistent',
+  'check.register.ok'       : 'Both read as {style}.',
+  'check.register.warn'     : 'First message reads {msg}, but Communication style says {style}.',
+  'check.safety.label'      : 'Crisis rule',
+  'check.safety.ok'         : 'Looks like it\u2019s there.',
+  'check.safety.warn'       : 'Required: what the character does when {{user}} is in real trouble.',
+  'check.length.label'      : 'Reply length (as a number)',
+  'check.length.ok'         : 'There\u2019s a number.',
+  'check.length.warn'       : 'Give reply length as a number (e.g. 600\u2013900 characters).',
+  'check.npc.label'         : 'NPC (optional)',
+  'check.npc.tip'           : 'Empty. 2\u20133 NPCs are what turn a chat into a world.',
+  'check.style.label'       : 'Communication style (optional)',
+  'check.style.tip'         : 'Empty. This is where you set how they address {{user}} and how they sound.',
+  'check.notes.label'       : 'Creator notes (optional)',
+  'check.notes.tip'         : 'Empty. A teaser for readers + any trigger warnings.',
+
+  /* ---------- saved characters ---------- */
+  'saved.title'        : 'Character',
+  'saved.loading'      : 'Loading\u2026',
+  'saved.hint'         : 'Copy each field and paste it one by one into the Build a Character form in the Imely app.',
+  'saved.copy'         : 'Copy',
+  'saved.copied'       : 'Copied \u2713',
+  'saved.empty'        : '(empty)',
+  'saved.delete'       : 'Delete',
+  'saved.edit'         : 'Edit',
+  'saved.noName'       : 'Untitled',
+
+  'confirm.title'      : 'Are you sure?',
+  'confirm.cancel'     : 'Cancel',
+  'confirm.delete.title': 'Delete this character?',
+  'confirm.delete.msg' : 'This character will be deleted permanently and can\u2019t be brought back.',
+  'confirm.delete.ok'  : 'Delete',
+  'confirm.deleting'   : 'Deleting\u2026',
+
+  /* ---------- auth ---------- */
+  'auth.signIn'        : 'Sign in',
+  'auth.signingIn'     : 'Signing in\u2026',
+  'auth.signOut'       : 'Sign out',
+  'auth.lead'          : 'Sign in with the email and password you were given. The guide and the examples stay open without signing in.',
+  'auth.email.ph'      : 'your email',
+  'auth.pass.ph'       : 'password',
+  'auth.account'       : 'account',
+
+  /* ---------- toasts ---------- */
+  'toast.saved'        : 'Character saved',
+  'toast.saveFail'     : 'Couldn\u2019t save',
+  'toast.deleted'      : 'Character deleted',
+  'toast.deleteFail'   : 'Couldn\u2019t delete',
+  'toast.signedOut'    : 'Signed out',
+  'toast.demoLogin'    : 'Demo mode: sign-in skipped',
+  'toast.needCreds'    : 'Enter your email & password',
+  'toast.badCreds'     : 'Wrong email or password',
+  'toast.signInFail'   : 'Couldn\u2019t sign in'
+
+});

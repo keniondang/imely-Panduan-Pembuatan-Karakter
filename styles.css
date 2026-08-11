@@ -485,3 +485,16 @@
   .toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%) translateY(20px);background:#111;color:#fff;
     padding:14px 22px;border-radius:14px;font-size:15px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:120;max-width:340px;text-align:center;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  /* ---------- localisation: language picker + draft example cards ---------- */
+  .lang-wrap{position:relative;display:flex;align-items:center;}
+  .lang-ic{position:absolute;left:9px;color:var(--sub);pointer-events:none;}
+  .lang-sel{appearance:none;-webkit-appearance:none;background:#fff;border:1px solid var(--line);border-radius:999px;
+    padding:8px 12px 8px 30px;font-family:inherit;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;max-width:132px;
+    text-overflow:ellipsis;transition:.15s;}
+  .lang-sel:hover{border-color:var(--teal);}
+  .lang-sel:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+
+  /* An example slot that has a market brief but no finished character yet. */
+  .ex-card.is-draft{opacity:.62;}
+  .ex-card.is-draft .ex-thumb::after{content:"DRAFT";position:absolute;top:8px;left:8px;background:rgba(17,17,17,.78);color:#fff;
+    font-size:10px;font-weight:800;letter-spacing:.06em;border-radius:999px;padding:3px 8px;}

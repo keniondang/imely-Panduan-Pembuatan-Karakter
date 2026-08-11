@@ -1,0 +1,252 @@
+/* ---- lang-id: Indonesian UI strings (fallback pack) ----
+   Every key that exists here must exist in every other lang-*.js.
+   Missing keys in another market silently fall back to this file.
+   {braces} are substituted at render time.
+*/
+
+I18N.registerUI('id', {
+
+  /* ---------- shell ---------- */
+  'app.title'          : 'Belajar Buat Karakter',
+  'app.kicker'         : 'Panduan Kreator',
+  'app.hero.sub'       : 'Pelajari tiap kolom lewat contoh yang benar-benar hidup, lalu coba sendiri dari nol.',
+  'lang.picker'        : 'Bahasa',
+
+  'nav.guide'          : 'Panduan',
+  'nav.examples'       : 'Contoh',
+  'nav.create'         : 'Buat',
+  'nav.back'           : 'Kembali',
+  'nav.close'          : 'Tutup',
+  'nav.more'           : 'Lainnya',
+  'nav.next'           : 'Lanjut',
+  'nav.prev'           : 'Sebelumnya',
+
+  /* ---------- home ---------- */
+  'home.sec.start'     : 'Mulai dari sini',
+  'home.sec.examples'  : 'Contoh lengkap',
+  'home.sec.try'       : 'Coba sendiri',
+  'home.sec.mine'      : 'Karakter saya',
+  'home.guide.title'   : 'Panduan 14 kolom',
+  'home.guide.sub'     : 'Tiap kolom: penjelasan + struktur cara isinya',
+  'home.practice.title': 'Latihan dari nol',
+  'home.practice.sub'  : 'Form kosong buat kamu isi sendiri',
+  'home.addAria'       : 'Buat karakter',
+
+  /* ---------- guide ---------- */
+  'guide.title'        : 'Panduan 14 Kolom',
+  'guide.legend.title' : 'Aturan format',
+  'guide.legend.action': 'bintang buat gerakan / narasi',
+  'guide.legend.speech': 'tanda kutip buat dialog',
+  'guide.legend.user'  : 'otomatis diganti nama pemain',
+  'guide.colTitle'     : 'Kolom',
+  'guide.seeExample'   : 'Lihat contoh lengkap',
+  'guide.seeGuide'     : 'Lihat panduan',
+
+  'badge.public'       : '\uD83D\uDC41 Publik',
+  'badge.setting'      : '\u2699\uFE0F Setelan',
+  'badge.aiOnly'       : '\uD83D\uDD12 Cuma AI',
+  'badge.required'     : 'Wajib',
+  'badge.optional'     : 'Opsional',
+
+  /* ---------- form: titles & chrome ---------- */
+  'form.title.create'  : 'Buat Karakter',
+  'form.title.practice': 'Latihan',
+  'form.title.example' : 'Contoh: {name}',
+  'form.title.edit'    : 'Edit: {name}',
+  'form.reqNote'       : '(*) Konten wajib',
+  'form.chars'         : '{n} karakter',
+  'form.check'         : 'Cek karakter',
+  'form.checkExample'  : 'Cek contoh ini',
+  'form.advanced'      : 'Pengaturan lanjutan',
+  'form.addHashtag'    : 'Tambah hashtag',
+  'form.hashtag.ph'    : 'Masukkan 1 hashtag...',
+  'form.remove'        : 'Hapus',
+  'form.suggest'       : 'Saran:',
+
+  /* ---------- form: the 14 fields ----------
+     These labels must match the wording used inside the real Imely app for
+     this market, because creators copy field-by-field between the two. */
+  'field.avatar'          : 'Avatar',
+  'field.name'            : 'Nama karakter:',
+  'field.name.ph'         : 'Nama karakter...',
+  'field.gender'          : 'Jenis kelamin:',
+  'field.hashtag'         : 'Hashtag:',
+  'field.hashtag.hint'    : 'Biar karaktermu gampang ditemukan.',
+  'field.tagline'         : 'Tagline:',
+  'field.tagline.ph'      : 'Satu kalimat yang bikin penasaran...',
+  'field.personality'     : 'Kepribadian:',
+  'field.personality.hint': 'Sifat dan kepribadian karakter',
+  'field.personality.ph'  : 'Sifat asli karakter...',
+  'field.publicInfo'      : 'Informasi publik:',
+  'field.publicInfo.hint' : 'Ditampilkan di profil karakter',
+  'field.publicInfo.ph'   : 'Contoh: Umur, kerjaan, ciri fisik karakter...',
+  'field.opener'          : 'Pembuka percakapan:',
+  'field.opener.hint'     : 'Konteks dan pesan pertama saat pengguna masuk ke chat.',
+  'field.biography'       : 'Biografi:',
+  'field.biography.ph'    : 'Latar belakang karakter...',
+  'field.firstMessage'    : 'Pesan pertama:',
+  'field.firstMessage.ph' : 'Set adegan + kalimat pertamanya. *Bintang* buat aksi, "kutip" buat ucapan...',
+  'field.npc'             : 'Karakter pendukung:',
+  'field.npc.ph'          : 'Contoh: teman, saingan, keluarga...',
+  'field.style'           : 'Gaya Komunikasi:',
+  'field.style.ph'        : 'Contoh: Ramah, akrab, menggunakan kata ganti santai...',
+  'field.guidelines'      : 'Pedoman dan batasan perilaku:',
+  'field.guidelines.ph'   : 'Hal yang karakter nggak boleh lakukan...',
+  'field.creatorNotes'    : 'Catatan kreator:',
+  'field.creatorNotes.hint':'Konteks dan pesan awal yang disampaikan karakter Anda saat orang-orang mulai mengobrol.',
+  'field.creatorNotes.ph' : 'Pesan atas karakter...',
+  'field.privacy'         : 'Privasi',
+
+  /* short labels used in the saved-character view and the check dump */
+  'label.name'         : 'Nama karakter',
+  'label.gender'       : 'Jenis kelamin',
+  'label.hashtag'      : 'Hashtag',
+  'label.tagline'      : 'Tagline',
+  'label.personality'  : 'Kepribadian',
+  'label.publicInfo'   : 'Informasi publik',
+  'label.biography'    : 'Biografi',
+  'label.firstMessage' : 'Pesan pertama',
+  'label.npc'          : 'Karakter pendukung (NPC)',
+  'label.style'        : 'Gaya komunikasi',
+  'label.guidelines'   : 'Pedoman & batasan',
+  'label.creatorNotes' : 'Catatan kreator',
+
+  /* ---------- gender values ---------- */
+  'gender.pick'        : 'Pilih...',
+  'gender.male'        : 'Pria',
+  'gender.female'      : 'Wanita',
+  'gender.other'       : 'Lainnya',
+
+  /* ---------- communication-style chips ----------
+     Keys are stable across markets; the wording is per-market. */
+  'chip.neutral'       : 'Netral',
+  'chip.concise'       : 'Ringkas dan langsung ke intinya',
+  'chip.formal'        : 'Formal',
+  'chip.sarcastic'     : 'Sarkastik',
+  'chip.genz'          : 'Gen Z',
+  'chip.literary'      : 'Sastrawi',
+  'chip.talkative'     : 'Banyak bicara',
+  'chip.positive'      : 'Positif',
+
+  /* ---------- privacy ---------- */
+  'priv.title'         : 'Privasi',
+  'priv.private'       : 'Hanya saya',
+  'priv.private.desc'  : 'Hanya kamu yang bisa melihat. Orang yang punya tautannya pun nggak bisa buka.',
+  'priv.public'        : 'Publik',
+  'priv.public.desc'   : 'Semua pengguna bisa lihat.',
+
+  /* ---------- field hints in the editor popup ---------- */
+  'hint.tagline'       : 'Kalimat yang keluar dari mulut karakter, bukan deskripsi. Bikin penasaran + langsung nunjukin mood.',
+  'hint.personality'   : 'Otak karakter: 3 sifat sebagai rasa, 1 keinginan + 1 ketakutan, tabel reaksi (min 5 baris), rahasia, lalu 7 level kedekatan.',
+  'hint.publicInfo'    : 'Fakta permukaan (umur, kerjaan, tempat) + 1 kalimat pemancing. Jangan bocorin rahasia di sini.',
+  'hint.biography'     : 'Trailer bukan film: asal-usul \u2192 siluet peristiwa besar \u2192 bentuk luka \u2192 kondisi sekarang.',
+  'hint.firstMessage'  : '[Tempat] + [dia ngapain] + [{{user}} gimana] + [kenapa ketemu]. Pakai *aksi* & "ucapan", tutup dengan hook.',
+  'hint.npc'           : '2\u20133 NPC. Tiap NPC: nama, peran, sifat, sikap ke {{user}} + konflik. NPC nggak ngambil keputusan buat {{user}}.',
+  'hint.guidelines'    : 'Tulis \u201Clakukan ini, jangan itu\u201D. Wajib ada pagar keselamatan buat krisis. Panjang respons dalam angka.',
+  'hint.creatorNotes'  : '1 kesan/mood buat pembaca (bukan aturan) + trigger warning. Kolom ini nggak dibaca AI.',
+
+  /* ---------- editor / example popups ---------- */
+  'modal.help'         : 'Bantuan',
+  'modal.cancel'       : 'Batal',
+  'modal.done'         : 'Selesai',
+  'modal.close'        : 'Tutup',
+  'ex.pick'            : 'pilih contoh',
+  'ex.pickWith'        : '{label} \u2014 pilih contoh',
+  'ex.other'           : '\u2039 Pilih contoh lain',
+  'ex.label'           : 'Contoh',
+
+  /* ---------- preview (etalase) ---------- */
+  'preview.tagline'      : 'Tagline:',
+  'preview.creator'      : 'Kreator:',
+  'preview.creatorNotes' : 'Catatan kreator:',
+  'preview.publicInfo'   : 'Informasi publik:',
+  'preview.biography'    : 'Biografi:',
+  'preview.firstMessage' : 'Pesan pertama:',
+  'preview.seeFull'      : 'Lihat contoh lengkap',
+  'preview.yourChar'     : 'Karakter kamu',
+
+  /* ---------- check screen ---------- */
+  'check.title'        : 'Hasil Cek',
+  'check.section'      : 'Hasil cek',
+  'check.score'        : '<strong>{ok} dari {total}</strong> poin wajib beres',
+  'check.scoreWarn'    : ' \u00b7 {warn} perlu dilengkapin',
+  'check.seeAll'       : 'Lihat semua isian',
+  'check.guideLink'    : 'Panduan',
+  'check.back'         : 'Kembali',
+  'check.backFix'      : 'Kembali & lengkapin',
+  'check.save'         : 'Simpan karakter',
+  'check.saving'       : 'Menyimpan\u2026',
+  'check.dumpEmpty'    : '(masih kosong)',
+
+  'check.filled'       : 'Terisi.',
+  'check.blank'        : 'Masih kosong.',
+  'check.gender.ok'    : 'Terpilih.',
+  'check.gender.warn'  : 'Belum dipilih.',
+  'check.personality.label' : 'Kepribadian terisi',
+  'check.personality.warn'  : 'Kolom paling penting, masih kosong.',
+  'check.reaction.label'    : 'Tabel Reaksi (min 5)',
+  'check.reaction.ok'       : 'Ada {n} baris pemicu\u2192respons.',
+  'check.reaction.warn'     : 'Baru {n} baris. Target minimal 5.',
+  'check.wantfear.label'    : 'Keinginan & ketakutan',
+  'check.wantfear.ok'       : 'Kelihatan disebut.',
+  'check.wantfear.warn'     : 'Belum kelihatan 1 keinginan + 1 ketakutan.',
+  'check.bioLong.label'     : 'Biografi agak panjang',
+  'check.bioLong.warn'      : 'Cukup siluet \u2014 detail lengkap simpan di Kepribadian.',
+  'check.format.label'      : 'Format *aksi* & "ucapan"',
+  'check.format.ok'         : 'Dua-duanya dipakai.',
+  'check.format.warn'       : 'Pakai *bintang* buat aksi dan "kutip" buat ucapan.',
+  'check.register.label'    : 'Kata ganti konsisten',
+  'check.register.ok'       : 'Sama-sama {style}.',
+  'check.register.warn'     : 'Pesan pertama pakai {msg}, tapi Gaya {style}.',
+  'check.safety.label'      : 'Pagar keselamatan',
+  'check.safety.ok'         : 'Terlihat ada.',
+  'check.safety.warn'       : 'Wajib: aturan pas {{user}} lagi krisis pribadi.',
+  'check.length.label'      : 'Panjang respons (angka)',
+  'check.length.ok'         : 'Ada angka.',
+  'check.length.warn'       : 'Sebut panjang balasan pakai angka (mis. 600\u2013900 karakter).',
+  'check.npc.label'         : 'NPC (opsional)',
+  'check.npc.tip'           : 'Kosong. 2\u20133 NPC bikin dunia terasa hidup.',
+  'check.style.label'       : 'Gaya komunikasi (opsional)',
+  'check.style.tip'         : 'Kosong. Ngatur kata ganti & ritme ngomong.',
+  'check.notes.label'       : 'Catatan kreator (opsional)',
+  'check.notes.tip'         : 'Kosong. Teaser buat pembaca + trigger warning.',
+
+  /* ---------- saved characters ---------- */
+  'saved.title'        : 'Karakter',
+  'saved.loading'      : 'Memuat\u2026',
+  'saved.hint'         : 'Copy tiap kolom, terus paste satu-satu ke form Buat Karakter di app Imely.',
+  'saved.copy'         : 'Copy',
+  'saved.copied'       : 'Tersalin \u2713',
+  'saved.empty'        : '(kosong)',
+  'saved.delete'       : 'Hapus',
+  'saved.edit'         : 'Edit',
+  'saved.noName'       : 'Tanpa nama',
+
+  'confirm.title'      : 'Yakin?',
+  'confirm.cancel'     : 'Batal',
+  'confirm.delete.title': 'Hapus karakter?',
+  'confirm.delete.msg' : 'Karakter ini bakal dihapus permanen dan nggak bisa dibalikin.',
+  'confirm.delete.ok'  : 'Hapus',
+  'confirm.deleting'   : 'Menghapus\u2026',
+
+  /* ---------- auth ---------- */
+  'auth.signIn'        : 'Masuk',
+  'auth.signingIn'     : 'Masuk\u2026',
+  'auth.signOut'       : 'Keluar',
+  'auth.lead'          : 'Masuk pakai email & password yang dikasih. Baca panduan & contoh tetap bebas tanpa masuk.',
+  'auth.email.ph'      : 'email kamu',
+  'auth.pass.ph'       : 'password',
+  'auth.account'       : 'akun',
+
+  /* ---------- toasts ---------- */
+  'toast.saved'        : 'Karakter tersimpan',
+  'toast.saveFail'     : 'Gagal menyimpan',
+  'toast.deleted'      : 'Karakter dihapus',
+  'toast.deleteFail'   : 'Gagal menghapus',
+  'toast.signedOut'    : 'Keluar',
+  'toast.demoLogin'    : 'Mode demo: login dilewati',
+  'toast.needCreds'    : 'Isi email & password',
+  'toast.badCreds'     : 'Email atau password salah',
+  'toast.signInFail'   : 'Gagal masuk'
+
+});
