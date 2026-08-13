@@ -229,6 +229,20 @@ I18N.registerUI('id', {
   'confirm.delete.ok'  : 'Hapus',
   'confirm.deleting'   : 'Menghapus\u2026',
 
+  /* ---------- settings ---------- */
+  'settings.title'      : 'Pengaturan',
+  'settings.account'    : 'Akun',
+  'settings.language'   : 'Bahasa',
+  'settings.language.note': 'Ganti bahasa bakal muat ulang halaman. Karakter yang udah kamu simpan nggak keubah.',
+  'settings.appearance' : 'Tampilan',
+  'settings.dark'       : 'Mode gelap',
+  'settings.dark.system': 'Lagi ngikutin setelan HP kamu.',
+  'settings.dark.manual': 'Kamu yang atur sendiri.',
+  'settings.dark.useSystem': 'Ikutin setelan HP',
+  'settings.signedOut'  : 'Kamu belum masuk. Panduan & contoh tetap bisa dibaca.',
+  'settings.demo'       : 'Mode demo',
+  'settings.demo.desc'  : 'Backend belum nyambung, jadi karakter disimpan di browser ini doang.',
+
   /* ---------- auth ---------- */
   'auth.signIn'        : 'Masuk',
   'auth.signingIn'     : 'Masuk\u2026',

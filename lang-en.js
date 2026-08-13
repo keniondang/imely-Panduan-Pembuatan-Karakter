@@ -227,6 +227,20 @@ I18N.registerUI('en', {
   'confirm.delete.ok'  : 'Delete',
   'confirm.deleting'   : 'Deleting\u2026',
 
+  /* ---------- settings ---------- */
+  'settings.title'      : 'Settings',
+  'settings.account'    : 'Account',
+  'settings.language'   : 'Language',
+  'settings.language.note': 'Changing the language reloads the page. Your saved characters stay as they are.',
+  'settings.appearance' : 'Appearance',
+  'settings.dark'       : 'Dark mode',
+  'settings.dark.system': 'Following your device setting.',
+  'settings.dark.manual': 'Set by you.',
+  'settings.dark.useSystem': 'Follow my device',
+  'settings.signedOut'  : 'You\u2019re not signed in. The guide and the examples stay readable.',
+  'settings.demo'       : 'Demo mode',
+  'settings.demo.desc'  : 'No backend connected, so characters are saved in this browser only.',
+
   /* ---------- auth ---------- */
   'auth.signIn'        : 'Sign in',
   'auth.signingIn'     : 'Signing in\u2026',

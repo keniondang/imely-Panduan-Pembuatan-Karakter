@@ -98,25 +98,14 @@ var I18N = (function () {
   }
 
   /* ---------- switching ---------- */
+  /* Switching market swaps both packs, so the simplest correct move is a
+     reload. Saved characters are untouched: only labels are localised. */
   function setLang(code) {
     if (!known(code) || code === current) return;
     try { localStorage.setItem(LS_KEY, code); } catch (e) {}
     var u = new URL(location.href);
     u.searchParams.delete('lang');   // stored preference wins from here on
     location.replace(u.toString());
-  }
-
-  function renderPicker() {
-    var host = document.getElementById('langArea');
-    if (!host) return;
-    var opts = MARKETS.map(function (m) {
-      return '<option value="' + m.code + '"' + (m.code === current ? ' selected' : '') + '>' + m.label + '</option>';
-    }).join('');
-    host.innerHTML =
-      '<div class="lang-wrap">' +
-      '<svg class="lang-ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>' +
-      '<select class="lang-sel" aria-label="' + t('lang.picker') + '" onchange="I18N.setLang(this.value)">' + opts + '</select>' +
-      '</div>';
   }
 
   /* ---------- sequential script loader ---------- */
@@ -150,7 +139,6 @@ var I18N = (function () {
       window.EXAMPLES = c.EXAMPLES;
       window.CHECKS = c.CHECKS;
       applyDom();
-      renderPicker();
       if (window.App && App.boot) App.boot();
     });
   }

@@ -6,8 +6,8 @@
 */
 
 var EXPAND_SVG='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9.2a3 3 0 015.7 1.1c0 2-3 2.6-3 2.6"/><line x1="12" y1="17.2" x2="12" y2="17.2"/></svg>';
-var LOCK='<svg viewBox="0 0 24 24" width="22" height="22" fill="#2A2E32"><path d="M12 1a5 5 0 00-5 5v3H6a2 2 0 00-2 2v9a2 2 0 002 2h12a2 2 0 002-2v-9a2 2 0 00-2-2h-1V6a5 5 0 00-5-5zm3 8H9V6a3 3 0 016 0v3z"/></svg>';
-var GLOBE='<svg viewBox="0 0 24 24" width="22" height="22" fill="#2A2E32"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.9 6h-2.5a15.7 15.7 0 00-1.4-3.6A8 8 0 0118.9 8zM12 4c.8 1.1 1.4 2.5 1.8 4h-3.6C10.6 6.5 11.2 5.1 12 4zM4.3 14a7.9 7.9 0 010-4h2.9a17.6 17.6 0 000 4H4.3zm.8 2h2.5c.3 1.3.8 2.5 1.4 3.6A8 8 0 015.1 16zm2.5-8H5.1a8 8 0 013.9-3.6A15.7 15.7 0 007.6 8zM12 20c-.8-1.1-1.4-2.5-1.8-4h3.6c-.4 1.5-1 2.9-1.8 4zm2.2-6H9.8a15.5 15.5 0 010-4h4.4a15.5 15.5 0 010 4zm.4 5.6c.6-1.1 1.1-2.3 1.4-3.6h2.5a8 8 0 01-3.9 3.6zM16.8 14a17.6 17.6 0 000-4h2.9a7.9 7.9 0 010 4h-2.9z"/></svg>';
+var LOCK='<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 1a5 5 0 00-5 5v3H6a2 2 0 00-2 2v9a2 2 0 002 2h12a2 2 0 002-2v-9a2 2 0 00-2-2h-1V6a5 5 0 00-5-5zm3 8H9V6a3 3 0 016 0v3z"/></svg>';
+var GLOBE='<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.9 6h-2.5a15.7 15.7 0 00-1.4-3.6A8 8 0 0118.9 8zM12 4c.8 1.1 1.4 2.5 1.8 4h-3.6C10.6 6.5 11.2 5.1 12 4zM4.3 14a7.9 7.9 0 010-4h2.9a17.6 17.6 0 000 4H4.3zm.8 2h2.5c.3 1.3.8 2.5 1.4 3.6A8 8 0 015.1 16zm2.5-8H5.1a8 8 0 013.9-3.6A15.7 15.7 0 007.6 8zM12 20c-.8-1.1-1.4-2.5-1.8-4h3.6c-.4 1.5-1 2.9-1.8 4zm2.2-6H9.8a15.5 15.5 0 010-4h4.4a15.5 15.5 0 010 4zm.4 5.6c.6-1.1 1.1-2.3 1.4-3.6h2.5a8 8 0 01-3.9 3.6zM16.8 14a17.6 17.6 0 000-4h2.9a7.9 7.9 0 010 4h-2.9z"/></svg>';
 
 /* textarea id -> hint key (lang pack) and -> content field key (content pack) */
 var HINT_KEY={f_tagline:'hint.tagline',f_kepribadian:'hint.personality',f_info:'hint.publicInfo',f_bio:'hint.biography',
@@ -137,7 +137,7 @@ function addHashRow(val){
   var wrap=document.getElementById('hashRows');
   var row=document.createElement('div');row.className='hashtag-input';row.style.marginBottom='12px';
   row.innerHTML='<input class="txt" type="text" placeholder="'+escHtml(t('form.hashtag.ph'))+'" value="'+(val?String(val).replace(/"/g,'&quot;'):'')+'">'+
-    '<button class="clear" onclick="this.parentNode.remove()" aria-label="'+escHtml(t('form.remove'))+'"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#111" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>';
+    '<button class="clear" onclick="this.parentNode.remove()" aria-label="'+escHtml(t('form.remove'))+'"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>';
   wrap.appendChild(row);
 }
 
@@ -164,7 +164,7 @@ function clearForm(){
   var g=document.getElementById('f_gender');g.value='';g.classList.remove('filled');
   document.getElementById('hashRows').innerHTML='';
   setChips([]);
-  document.getElementById('avatar').innerHTML='<input type="file" accept="image/*" hidden id="avatarInput"><svg viewBox="0 0 24 24" fill="#111"><path d="M9 3l-1.5 2H5a2 2 0 00-2 2v11a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2h-2.5L15 3H9zm3 15a5 5 0 110-10 5 5 0 010 10z"/></svg><span>'+escHtml(t('field.avatar'))+'</span>';
+  document.getElementById('avatar').innerHTML='<input type="file" accept="image/*" hidden id="avatarInput"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 3l-1.5 2H5a2 2 0 00-2 2v11a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2h-2.5L15 3H9zm3 15a5 5 0 110-10 5 5 0 010 10z"/></svg><span>'+escHtml(t('field.avatar'))+'</span>';
   bindAvatar();
   pickPrivByVal('private');
 }
@@ -217,11 +217,11 @@ function openPreview(key){
   var himg=document.getElementById('pvHeroImg');if(d.img){himg.style.backgroundImage="url('"+d.img+"')";himg.hidden=false;}else{himg.hidden=true;himg.style.backgroundImage='';}
   var html='';
   html+='<div class="pv-tagbox"><p class="lbl">'+t('preview.tagline')+'</p><div class="q">'+
-    '<svg width="22" height="22" viewBox="0 0 24 24" fill="#12C4A6"><path d="M7 7h4v4c0 2.5-1.5 4-4 4V13H5V9a2 2 0 012-2zm8 0h4v4c0 2.5-1.5 4-4 4V13h-2V9a2 2 0 012-2z"/></svg>'+
+    '<svg width="22" height="22" viewBox="0 0 24 24" fill="var(--teal)"><path d="M7 7h4v4c0 2.5-1.5 4-4 4V13H5V9a2 2 0 012-2zm8 0h4v4c0 2.5-1.5 4-4 4V13h-2V9a2 2 0 012-2z"/></svg>'+
     '<p>'+escHtml(d.tagline)+'</p></div>'+
     '<div class="pv-tagchips">'+(d.tags||[]).map(function(x){return '<span>'+escHtml(x)+'</span>';}).join('')+'</div></div>';
   html+='<div class="pv-sec"><p class="lbl">'+t('preview.creator')+'</p><div class="pv-creator"><span class="ava">i</span><span class="nm">imely.ai</span>'+
-    '<span class="chev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA0A5" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></span></div></div>';
+    '<span class="chev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></span></div></div>';
   html+='<div class="pv-sec"><p class="lbl">'+t('preview.creatorNotes')+'</p><p class="val">'+escHtml(d.catatan)+'</p></div>';
   html+='<div class="pv-sec"><p class="lbl">'+t('preview.publicInfo')+'</p><p class="val">'+escHtml(d.infoPublik)+'</p></div>';
   html+='<div class="pv-sec"><p class="lbl">'+t('preview.biography')+'</p><p class="val">'+escHtml(d.biografi)+'</p></div>';
@@ -263,7 +263,7 @@ function openExampleChooser(fieldKey,label){
     html+='<button class="ex-choose-btn" onclick="pickExampleChar(\''+key+'\')">'+
       '<span class="ec-ava" style="background:'+d.grad+'">'+(d.emoji||'')+(d.img?'<span class="ec-ava-img" style="background-image:url('+d.img+')"></span>':'')+'</span>'+
       '<span class="ec-name">'+escHtml(shortName(key))+'</span>'+
-      '<svg class="ec-chev" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#C2C7CC" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>';
+      '<svg class="ec-chev" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>';
   });
   html+='</div>';
   var b=document.getElementById('exBody');b.innerHTML=html;b.scrollTop=0;
@@ -328,6 +328,55 @@ function pickPrivByVal(val){
   document.getElementById('privLabel').textContent=(val==='public'?t('priv.public'):t('priv.private'));
   document.getElementById('privIcon').innerHTML=(val==='public'?GLOBE:LOCK);
 }
+
+/* ---------- settings ----------
+   Holds account, language and appearance. Account rows are rendered by
+   renderAccount() in auth.js so they stay in sync with the session. */
+function openSettings(){renderSettings();showScreen('screen-settings');}
+
+function renderSettings(){
+  renderAccount();
+  renderLanguageRows();
+  renderAppearanceRows();
+}
+function renderLanguageRows(){
+  var box=document.getElementById('setLanguage');if(!box)return;
+  box.innerHTML=I18N.MARKETS.map(function(m){
+    var on=m.code===I18N.lang;
+    return '<button class="set-row'+(on?' on':'')+'" onclick="I18N.setLang(\''+m.code+'\')" aria-current="'+on+'">'+
+      '<div class="set-main"><strong>'+escHtml(m.label)+'</strong></div>'+
+      '<svg class="tick" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></button>';
+  }).join('');
+}
+
+/* Theme: 'light' | 'dark' | 'system'. No stored choice means system. */
+var THEME_KEY='imely_theme';
+function storedTheme(){try{return localStorage.getItem(THEME_KEY)||'system';}catch(e){return 'system';}}
+function systemDark(){try{return matchMedia('(prefers-color-scheme: dark)').matches;}catch(e){return false;}}
+function effectiveTheme(){var v=storedTheme();return v==='system'?(systemDark()?'dark':'light'):v;}
+function applyTheme(){document.documentElement.setAttribute('data-theme',effectiveTheme());}
+function setTheme(v){
+  try{localStorage.setItem(THEME_KEY,v);}catch(e){}
+  applyTheme();renderAppearanceRows();
+}
+function toggleDark(){setTheme(effectiveTheme()==='dark'?'light':'dark');}
+function renderAppearanceRows(){
+  var box=document.getElementById('setAppearance');if(!box)return;
+  var dark=effectiveTheme()==='dark',isSystem=storedTheme()==='system';
+  box.innerHTML=
+    '<div class="set-row"><div class="set-main"><strong>'+escHtml(t('settings.dark'))+'</strong>'+
+      '<small>'+escHtml(isSystem?t('settings.dark.system'):t('settings.dark.manual'))+'</small></div>'+
+      '<button class="set-toggle" role="switch" aria-checked="'+dark+'" aria-label="'+escHtml(t('settings.dark'))+'" onclick="toggleDark()"></button></div>'+
+    (isSystem?'':'<button class="set-row" onclick="setTheme(\'system\')"><div class="set-main"><strong>'+escHtml(t('settings.dark.useSystem'))+'</strong></div></button>');
+}
+/* Follow the OS live, but only while the user hasn't picked a side. */
+(function(){
+  try{
+    var mq=matchMedia('(prefers-color-scheme: dark)');
+    var onChange=function(){if(storedTheme()==='system'){applyTheme();renderAppearanceRows();}};
+    if(mq.addEventListener)mq.addEventListener('change',onChange);else if(mq.addListener)mq.addListener(onChange);
+  }catch(e){}
+})();
 
 /* ---------- avatar ---------- */
 function bindAvatar(){
@@ -409,7 +458,7 @@ function renderEtalaseCard(d){
   var grad=d.grad||'linear-gradient(150deg,#12908a,#0e5b53)';
   var h='<div class="et-card"><div class="et-hero" style="background:'+grad+'">'+(d.emoji?'<span class="et-emoji">'+d.emoji+'</span>':'')+(d.img?'<span class="pv-hero-img" style="background-image:url('+d.img+')"></span>':'')+
     '<div class="et-hero-meta"><h3>'+escHtml(d.name||t('preview.yourChar'))+'</h3></div></div><div class="et-body">';
-  h+='<div class="pv-tagbox"><p class="lbl">'+t('preview.tagline')+'</p><div class="q"><svg width="22" height="22" viewBox="0 0 24 24" fill="#12C4A6"><path d="M7 7h4v4c0 2.5-1.5 4-4 4V13H5V9a2 2 0 012-2zm8 0h4v4c0 2.5-1.5 4-4 4V13h-2V9a2 2 0 012-2z"/></svg><p>'+(d.tagline?escHtml(d.tagline):'\u2014')+'</p></div>';
+  h+='<div class="pv-tagbox"><p class="lbl">'+t('preview.tagline')+'</p><div class="q"><svg width="22" height="22" viewBox="0 0 24 24" fill="var(--teal)"><path d="M7 7h4v4c0 2.5-1.5 4-4 4V13H5V9a2 2 0 012-2zm8 0h4v4c0 2.5-1.5 4-4 4V13h-2V9a2 2 0 012-2z"/></svg><p>'+(d.tagline?escHtml(d.tagline):'\u2014')+'</p></div>';
   if(d.tags&&d.tags.length)h+='<div class="pv-tagchips">'+d.tags.map(function(x){return '<span>'+escHtml(x)+'</span>';}).join('')+'</div>';
   h+='</div>';
   h+='<div class="pv-sec"><p class="lbl">'+t('preview.creator')+'</p><div class="pv-creator"><span class="ava">i</span><span class="nm">imely.ai</span></div></div>';
@@ -573,9 +622,12 @@ var App={
     });
     document.querySelectorAll('#chips .chip').forEach(function(c){c.textContent=t('chip.'+c.dataset.key);});
     pickPrivByVal('private');
+    applyTheme();
+    renderLanguageRows();
+    renderAppearanceRows();
     buildPanduan();
     buildExampleGrid();
     bindAvatar();
-    initAuth();
+    initAuth();   /* renders the account rows in Settings */
   }
 };
