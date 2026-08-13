@@ -366,8 +366,7 @@ function renderAppearanceRows(){
   box.innerHTML=
     '<div class="set-row"><div class="set-main"><strong>'+escHtml(t('settings.dark'))+'</strong>'+
       '<small>'+escHtml(isSystem?t('settings.dark.system'):t('settings.dark.manual'))+'</small></div>'+
-      '<button class="set-toggle" role="switch" aria-checked="'+dark+'" aria-label="'+escHtml(t('settings.dark'))+'" onclick="toggleDark()"></button></div>'+
-    (isSystem?'':'<button class="set-row" onclick="setTheme(\'system\')"><div class="set-main"><strong>'+escHtml(t('settings.dark.useSystem'))+'</strong></div></button>');
+      '<button class="set-toggle" role="switch" aria-checked="'+dark+'" aria-label="'+escHtml(t('settings.dark'))+'" onclick="toggleDark()"></button></div>';
 }
 /* Follow the OS live, but only while the user hasn't picked a side. */
 (function(){

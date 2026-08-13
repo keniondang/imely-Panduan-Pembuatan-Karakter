@@ -236,7 +236,6 @@ I18N.registerUI('en', {
   'settings.dark'       : 'Dark mode',
   'settings.dark.system': 'Following your device setting.',
   'settings.dark.manual': 'Set by you.',
-  'settings.dark.useSystem': 'Follow my device',
   'settings.signedOut'  : 'You\u2019re not signed in. The guide and the examples stay readable.',
   'settings.demo'       : 'Demo mode',
   'settings.demo.desc'  : 'No backend connected, so characters are saved in this browser only.',
